@@ -1,0 +1,15 @@
+<div class="container">
+  <h1 class="header">Select A Style</h1>
+  <div class="grid">
+    <div *ngFor="let styleImage of styleImages" class="style">
+      <div
+        class="square-ratio"
+        routerLink="/product-detail"
+        [queryParams]="{ styleImageId: styleImage.id }"
+      >
+        <img [src]="styleImage.url" alt="" />
+      </div>
+      <h3 class="style-title">{{ styleImage.name }}</h3>
+    </div>
+  </div>
+</div>
