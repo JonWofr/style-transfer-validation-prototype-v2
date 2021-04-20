@@ -1,0 +1,155 @@
+@import "../../../../colors.scss";
+
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+.swiper-preview {
+  width: 100%;
+  box-shadow: #4b4c7369 0px 5px 20px;
+  background: rgb(61, 64, 98);
+  background: rgb(61, 64, 98);
+  background: linear-gradient(
+    149deg,
+    rgba(61, 64, 98, 1) 0%,
+    rgba(22, 24, 53, 1) 100%,
+    rgba(20, 22, 51, 1) 100%,
+    rgba(20, 22, 51, 1) 100%
+  );
+
+  .swiper-slide {
+    box-sizing: border-box;
+  }
+  .square-ratio {
+    padding-top: calc(100% + 40px);
+  }
+
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    margin: auto;
+
+    &.transparent-background {
+      width: 80%;
+      object-fit: contain;
+    }
+  }
+}
+
+.header {
+  position: relative;
+  z-index: 10;
+  border-radius: 40px 40px 0 0;
+  background-color: white;
+  transform: translateY(-40px);
+  padding-bottom: 0;
+  .title-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.5rem;
+    h2.product-title {
+      font-family: pf-reg;
+      font-weight: 400;
+      font-size: 2.4rem;
+    }
+
+    p.price {
+      display: flex;
+      flex-direction: column;
+      font-size: 1.8rem;
+      letter-spacing: 1.9px;
+      font-family: m-light;
+      span {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  h3.art-style {
+    font-family: m-bold;
+    font-size: 1.6rem;
+  }
+}
+
+form.personalisation-form {
+  //border-radius: 40px;
+  background-color: $dark-font-color;
+  //box-shadow: #2b2d42a1 0 3px 10px;
+  padding-bottom: 1rem;
+  position: relative;
+
+  h2 {
+    font-family: pf-reg;
+    color: white;
+    font-weight: 400;
+    margin-bottom: 2rem;
+    font-size: 1.7rem;
+  }
+
+  div.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.6rem;
+    position: relative;
+    label {
+      color: white;
+      font-size: 1rem;
+      margin-bottom: 0.8rem;
+    }
+    input,
+    .custom-file-input {
+      height: 42px;
+      border: none;
+      outline: none;
+      border-radius: 10px;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+      color: white;
+      background-color: $secondary-color;
+      &[type="file"] {
+        opacity: 0;
+      }
+    }
+    .custom-file-input {
+      position: absolute;
+      bottom: 0;
+      width: calc(100% - 1.5rem);
+      display: flex;
+      align-items: center;
+      padding-right: 0;
+      button {
+        background-color: $dark-font-color;
+        outline: none;
+        color: white;
+        border: solid white 1px;
+        height: 100%;
+        width: calc(50% + 0.725rem);
+        border-radius: 10px;
+        margin-left: auto;
+      }
+    }
+  }
+}
+
+.primary-btn {
+  width: calc(100%);
+  padding-top: 1.2rem;
+  padding-bottom: 1.2rem;
+  font-size: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3rem;
+}
+
+.transition-radius {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 40px;
+  border-radius: 40px 40px 0 0;
+  background-color: $secondary-color;
+  width: 100%;
+}

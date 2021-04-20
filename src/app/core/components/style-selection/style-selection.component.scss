@@ -1,0 +1,44 @@
+@import "../../../../colors.scss";
+
+.header {
+  font-family: m-bold;
+  font-size: 3rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+
+  div.style {
+    position: relative;
+    img {
+      border-radius: 30px 30px 0 0;
+      height: calc(100% - 1.5rem);
+      object-fit: cover;
+      object-position: bottom;
+    }
+    h3.style-title {
+      position: absolute;
+      height: initial;
+      background-color: $secondary-color;
+      color: white;
+      text-align: center;
+      bottom: 0;
+      padding-top: 0.8rem;
+      padding-bottom: 0.8rem;
+      width: 100%;
+      border-radius: 30px;
+      font-family: m-light;
+      font-weight: 400;
+      box-shadow: #4b4c7369 0px 3px 15px;
+    }
+  }
+}

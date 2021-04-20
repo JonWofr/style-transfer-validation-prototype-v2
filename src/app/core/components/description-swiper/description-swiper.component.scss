@@ -1,0 +1,39 @@
+@import "../../../../colors.scss";
+
+:host {
+  background-color: white;
+}
+
+.toggle {
+  padding-top: 6rem;
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 2rem;
+  h4 {
+    font-family: m-bold;
+    font-size: 1.6rem;
+    padding-bottom: 0.5rem;
+    color: $dark-font-color;
+    &.active {
+      border-bottom: 2px solid $primary-color;
+    }
+  }
+}
+
+.swiper-product-info {
+  .swiper-slide {
+    box-sizing: border-box;
+    padding-top: 1.5rem;
+
+    h2 {
+      color: $dark-font-color;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: $dark-font-color;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+  }
+}
