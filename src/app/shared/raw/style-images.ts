@@ -3,32 +3,38 @@ import { StyleImage } from '../models/style-image.model';
 export const styleImages: StyleImage[] = [
   {
     id: '1',
-    url: '/assets/images/styles/newspaper.jpg',
+    publicUrl:
+      'https://storage.googleapis.com/petai-validation.appspot.com/v2/style-images/newspaper.jpg',
     name: 'Newspaper',
   },
   {
     id: '2',
-    url: '/assets/images/styles/sprinkle.jpg',
+    publicUrl:
+      'https://storage.googleapis.com/petai-validation.appspot.com/v2/style-images/sprinkle.jpg',
     name: 'Sprinkle',
   },
   {
     id: '3',
-    url: '/assets/images/styles/modern_strokes.jpg',
+    publicUrl:
+      'https://storage.googleapis.com/petai-validation.appspot.com/v2/style-images/modern_strokes.jpg',
     name: 'Modern Strokes',
   },
   {
     id: '4',
-    url: '/assets/images/styles/abstract.jpg',
+    publicUrl:
+      'https://storage.googleapis.com/petai-validation.appspot.com/v2/style-images/abstract.jpg',
     name: 'Abstract',
   },
   {
     id: '5',
-    url: '/assets/images/styles/blue_monsoon.jpg',
+    publicUrl:
+      'https://storage.googleapis.com/petai-validation.appspot.com/v2/style-images/blue_monsoon.jpg',
     name: 'Blue Monsoon',
   },
   {
     id: '6',
-    url: '/assets/images/styles/rusty_white.jpg',
+    publicUrl:
+      'https://storage.googleapis.com/petai-validation.appspot.com/v2/style-images/rusty_white.jpg',
     name: 'Rusty White',
   },
 ];

@@ -116,10 +116,15 @@ form.personalisation-form {
     .custom-file-input {
       position: absolute;
       bottom: 0;
-      width: calc(100% - 1.5rem);
+      width: 100%;
+      box-sizing: border-box;
       display: flex;
+      justify-content: space-between;
       align-items: center;
       padding-right: 0;
+      p {
+        color: white;
+      }
       button {
         background-color: $dark-font-color;
         outline: none;
@@ -128,7 +133,6 @@ form.personalisation-form {
         height: 100%;
         width: calc(50% + 0.725rem);
         border-radius: 10px;
-        margin-left: auto;
       }
     }
   }

@@ -1,5 +1,5 @@
 export interface StyleImage {
   id: string;
-  url: string;
+  publicUrl: string;
   name: string;
 }

@@ -11,6 +11,11 @@ import { SummaryComponent } from './screens/summary/summary.component';
 import { DescriptionSwiperComponent } from './screens/product-detail/components/description-swiper/description-swiper.component';
 import { HowItWorksComponent } from './screens/home/components/how-it-works/how-it-works.component';
 import { HomeComponent } from './screens/home/home.component';
+import { RouterStateService } from './shared/services/router-state/router-state.service';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
@@ -23,8 +28,15 @@ import { HomeComponent } from './screens/home/home.component';
     HowItWorksComponent,
     HomeComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, SwiperModule],
-  providers: [],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    SwiperModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+  ],
+  providers: [RouterStateService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

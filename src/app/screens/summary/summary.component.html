@@ -1,6 +1,6 @@
 <div class="image-outer-container">
   <div class="image-inner-container">
-    <img src="assets/images/lola_mockup.png" alt="" />
+    <img [src]="imageSrc" alt="" />
   </div>
 </div>
 <div class="content-container">
@@ -9,11 +9,11 @@
     <ul>
       <li>
         <p>Pet name</p>
-        <p>PET_NAME</p>
+        <p>{{ petName }}</p>
       </li>
       <li>
         <p>Pet birthmonth</p>
-        <p>PET_BIRTHMONTH</p>
+        <p>{{ petBirthMonth }}</p>
       </li>
     </ul>
   </section>
@@ -25,10 +25,15 @@
       </p>
       <p>If you like the mug you can purchase it with the link in the mail.</p>
     </div>
-    <form>
+    <form ngNativeValidate (submit)="onSubmitForm($event)">
       <div class="form-group">
-        <label for="name">Email</label>
-        <input type="email" name="" id="name" required />
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          required
+          (keyup)="email = $event.target.value"
+        />
       </div>
       <button class="primary-btn" type="submit">Create My Art</button>
     </form>
