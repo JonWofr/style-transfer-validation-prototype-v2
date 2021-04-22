@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { DocumentCreationFailure } from './screens/document-creation-failure/document-creation-failure.component';
+import { DocumentCreationSuccess } from './screens/document-creation-success/document-creation-success.component';
 import { HomeComponent } from './screens/home/home.component';
 import { ProductDetailComponent } from './screens/product-detail/product-detail.component';
 import { StyleSelectionComponent } from './screens/style-selection/style-selection.component';
@@ -22,6 +24,14 @@ const routes: Routes = [
   {
     path: 'summary',
     component: SummaryComponent,
+  },
+  {
+    path: 'success',
+    component: DocumentCreationSuccess,
+  },
+  {
+    path: 'failure',
+    component: DocumentCreationFailure,
   },
   {
     path: '**',

@@ -28,16 +28,16 @@
     position: relative;
     top: -40px;
 
+    & h2 {
+      font-size: 2rem;
+      font-family: pf-reg;
+      font-weight: 400;
+    }
+
     & > section.top-card {
       padding: 2.5rem 2.5rem calc(2.5rem + 40px) 2.5rem;
       background-color: white;
       border-radius: 40px 40px 0 0;
-
-      & > h1 {
-        font-size: 2.4rem;
-        font-family: pf-reg;
-        font-weight: 400;
-      }
 
       & > ul {
         display: flex;
@@ -75,12 +75,17 @@
       position: relative;
       top: -40px;
 
+      & > h2 {
+        color: white;
+        margin-bottom: 1rem;
+      }
+
       & > div.paragraphs-container {
         margin-bottom: 2.4rem;
 
         & > p {
           color: white;
-          font-size: 1.3rem;
+          font-size: 1.2rem;
 
           &:first-child {
             margin-bottom: 1.6rem;
@@ -120,6 +125,11 @@
           padding: 1.2rem 0;
           font-size: 1.5rem;
           margin-bottom: 0;
+          transition: opacity 0.25s ease-in-out;
+
+          &.disabled {
+            opacity: 0.5;
+          }
         }
       }
     }

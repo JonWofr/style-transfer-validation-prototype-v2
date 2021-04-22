@@ -23,7 +23,7 @@
     <p class="price">29.99€</p>
   </div>
   <div class="style-price">
-    <h3 class="art-style">Sprinkle Style</h3>
+    <h3 class="art-style">{{ selectedStyleImage?.name }} Style</h3>
   </div>
 </div>
 
@@ -59,7 +59,9 @@
       required
     />
   </div>
-  <button class="primary-btn" type="submit">Create My Art</button>
+  <button class="primary-btn" type="submit" [class.disabled]="!selectedFile">
+    Create My Art
+  </button>
   <!-- <div class="transition-radius"></div> -->
 </form>
 

@@ -16,6 +16,8 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { DocumentCreationSuccess } from './screens/document-creation-success/document-creation-success.component';
+import { DocumentCreationFailure } from './screens/document-creation-failure/document-creation-failure.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
     DescriptionSwiperComponent,
     HowItWorksComponent,
     HomeComponent,
+    DocumentCreationSuccess,
+    DocumentCreationFailure,
   ],
   imports: [
     BrowserModule,

@@ -5,7 +5,7 @@
 </div>
 <div class="content-container">
   <section class="top-card">
-    <h1>Personalization Summary</h1>
+    <h2>Personalisation Overiew</h2>
     <ul>
       <li>
         <p>Pet name</p>
@@ -18,6 +18,7 @@
     </ul>
   </section>
   <section class="bottom-card">
+    <h2>Shipment</h2>
     <div class="paragraphs-container">
       <p>
         We will send you a preview of your dog on the mug within the next two
@@ -35,7 +36,9 @@
           (keyup)="email = $event.target.value"
         />
       </div>
-      <button class="primary-btn" type="submit">Create My Art</button>
+      <button class="primary-btn" type="submit" [class.disabled]="!email">
+        Submit
+      </button>
     </form>
   </section>
 </div>

@@ -1,0 +1,40 @@
+@import "../../../colors.scss";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  background-color: $dark-font-color;
+  padding: 2rem 1.5rem;
+  box-sizing: border-box;
+
+  & > h1 {
+    font-size: 2.3rem;
+    color: white;
+    font-family: ps-reg;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+  }
+
+  & > p {
+    text-align: center;
+    color: white;
+    font-family: m-reg;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  button.primary-btn {
+    width: 100%;
+    padding: 1.2rem 0;
+    font-size: 1.5rem;
+    margin-bottom: 0;
+    transition: opacity 0.25s ease-in-out;
+
+    &.disabled {
+      opacity: 0.5;
+    }
+  }
+}
