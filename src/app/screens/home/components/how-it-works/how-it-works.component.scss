@@ -1,6 +1,17 @@
+@import "../../../../../colors.scss";
+
 :host {
   display: flex;
   flex-direction: column;
+}
+
+h2 {
+  margin-top: 2rem;
+  margin-bottom: 5rem;
+  text-align: center;
+  font-family: m-bold;
+  color: $dark-font-color;
+  font-size: 2.5rem;
 }
 
 .step {

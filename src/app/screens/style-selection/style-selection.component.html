@@ -7,7 +7,7 @@
         routerLink="/product-detail"
         [queryParams]="{ styleImageId: styleImage.id }"
       >
-        <img [src]="styleImage.url" alt="" />
+        <img [src]="styleImage.publicUrl" alt="" />
       </div>
       <h3 class="style-title">{{ styleImage.name }}</h3>
     </div>

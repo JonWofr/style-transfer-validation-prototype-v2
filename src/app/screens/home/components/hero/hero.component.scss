@@ -8,6 +8,9 @@
   padding-bottom: 0;
   padding-top: 0;
   justify-content: space-evenly;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .header {
@@ -21,7 +24,9 @@
 }
 
 .hero-box {
+  width: 100%;
   .background {
+    overflow: hidden;
     border-radius: 64px;
     height: 100%;
     width: 100%;
@@ -37,9 +42,33 @@
       rgba(20, 22, 51, 1) 100%
     );
   }
+
+  h1 {
+    color: white;
+    font-family: m-bold;
+    padding-left: 3rem;
+    padding-top: 3rem;
+    font-size: 3rem;
+    span {
+      background-color: $primary-color;
+      color: white;
+      font-family: m-bold;
+      box-sizing: border-box;
+      position: relative;
+      padding-right: 1.2rem;
+      border-radius: 0 20px 20px 0;
+      div {
+        position: absolute;
+        left: -3rem;
+        background-color: $primary-color;
+        width: 3rem;
+        height: 100%;
+      }
+    }
+  }
   img {
-    height: calc(100% + 50px);
-    transform: translateY(-50px);
+    width: 100%;
+    transform: translateY(4%);
   }
 }
 

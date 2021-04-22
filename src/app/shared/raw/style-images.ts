@@ -31,10 +31,4 @@ export const styleImages: StyleImage[] = [
       'https://storage.googleapis.com/petai-validation.appspot.com/v2/style-images/blue_monsoon.jpg',
     name: 'Blue Monsoon',
   },
-  {
-    id: '6',
-    publicUrl:
-      'https://storage.googleapis.com/petai-validation.appspot.com/v2/style-images/rusty_white.jpg',
-    name: 'Rusty White',
-  },
 ];
