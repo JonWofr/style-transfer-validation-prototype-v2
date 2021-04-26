@@ -8,6 +8,9 @@ import { v4 as uuidv4 } from 'uuid';
 import * as firebase from 'firebase/app';
 import { styleImages } from 'src/app/shared/raw/style-images';
 import { StyleImage } from 'src/app/shared/models/style-image.model';
+import { AngularFireAnalytics } from '@angular/fire/analytics';
+
+declare const fbq: Function;
 
 @Component({
   selector: 'app-summary',
@@ -21,13 +24,15 @@ export class SummaryComponent implements OnInit {
   imageSrc: string;
   email: string;
   selectedStyleImage: StyleImage;
+  shouldShowSpinner = false;
 
   constructor(
     private routerStateService: RouterStateService,
     private router: Router,
     private firestore: AngularFirestore,
     private storage: AngularFireStorage,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private analytics: AngularFireAnalytics
   ) {}
 
   async ngOnInit(): Promise<void> {
@@ -74,9 +79,14 @@ export class SummaryComponent implements OnInit {
 
   async onSubmitForm(submitEvent: Event) {
     try {
+      this.shouldShowSpinner = true;
       submitEvent.preventDefault();
       const contentImagePublicUrl = await this.uploadFile(this.selectedFile);
       await this.createStylizationJobDocument(contentImagePublicUrl);
+      this.analytics.logEvent('generate_lead', {
+        value: this.selectedStyleImage.name,
+      });
+      fbq('track', 'Lead', { content_name: this.selectedStyleImage.name });
       this.router.navigate(['success'], {
         queryParams: { userEmail: this.email },
       });

@@ -1,3 +1,8 @@
+<div class="back-arrow-container">
+  <a routerLink="/product-detail" queryParamsHandling="preserve">
+    <img src="assets/icons/back-arrow.svg" alt="" />
+  </a>
+</div>
 <div class="image-outer-container">
   <div class="image-inner-container">
     <img [src]="imageSrc" alt="" />
@@ -41,4 +46,8 @@
       </button>
     </form>
   </section>
+</div>
+<div class="screen-overlay" [class.visible]="shouldShowSpinner">
+  <div class="dark-box"></div>
+  <img src="assets/images/loading-spinner.svg" alt="" />
 </div>

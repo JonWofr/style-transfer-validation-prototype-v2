@@ -4,6 +4,24 @@
   background-color: $dark-font-color;
   display: block;
 
+  div.back-arrow-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    padding: 1rem 0.75rem;
+
+    & > a {
+      display: inline-block;
+      padding: 0.5rem;
+
+      & > img {
+        display: block;
+        filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.7));
+      }
+    }
+  }
+
   & > div.image-outer-container {
     padding-top: 100%;
     position: relative;
@@ -132,6 +150,47 @@
           }
         }
       }
+    }
+  }
+
+  & > div.screen-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    pointer-events: none;
+
+    &.visible {
+      pointer-events: auto;
+      & > div.dark-box {
+        opacity: 0.5;
+      }
+      & > img {
+        opacity: 1;
+      }
+    }
+
+    & > div.dark-box {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background-color: rgba(0, 0, 0);
+      opacity: 0;
+      transition: opacity 0.25s ease-in-out;
+    }
+
+    & > img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100px;
+      height: 100px;
+      opacity: 0;
+      transition: opacity 0.25s ease-in-out;
     }
   }
 }
