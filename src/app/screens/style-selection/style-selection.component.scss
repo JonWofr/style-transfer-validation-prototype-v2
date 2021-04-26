@@ -1,8 +1,44 @@
 @import "../../../colors.scss";
 
+div.back-arrow-container {
+  position: fixed;
+  top: 2rem;
+  left: 2rem;
+  z-index: 2;
+
+  & > a {
+    display: inline-block;
+    padding: 0.5rem;
+
+    & > svg {
+      display: block;
+    }
+  }
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+
+  & > h1 {
+    font-family: m-bold;
+    font-size: 2rem;
+    line-height: 2rem;
+    padding: calc(2.5rem + 12px - 1rem);
+  }
+}
+
+div.container {
+  padding-top: calc(2 * (2.5rem + 12px - 1rem) + 2rem);
+}
+
 .header {
-  font-family: m-bold;
-  font-size: 2rem;
   text-align: center;
   display: flex;
   align-items: center;
@@ -11,7 +47,6 @@
   padding-top: 1rem;
   padding-bottom: 1rem;
   margin-bottom: 2rem;
-  background-color: white;
   position: sticky;
   top: 0;
 }
