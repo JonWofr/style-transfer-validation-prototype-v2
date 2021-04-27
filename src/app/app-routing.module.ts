@@ -12,14 +12,17 @@ const routes: Routes = [
     path: '',
     component: HomeComponent,
     pathMatch: 'full',
+    data: { animation: 'homePage' },
   },
   {
     path: 'styles-selection',
     component: StyleSelectionComponent,
+    data: { animation: 'styleSelection' },
   },
   {
     path: 'product-detail',
     component: ProductDetailComponent,
+    data: { animation: 'productDetail' },
   },
   {
     path: 'summary',

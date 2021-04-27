@@ -12,18 +12,12 @@
 </div>
 <div class="swiper-container swiper-preview">
   <div class="swiper-wrapper">
-    <div class="swiper-slide">
+    <div
+      *ngFor="let url of selectedStyleImage?.mockupUrls"
+      class="swiper-slide"
+    >
       <div class="square-ratio">
-        <img
-          class="transparent-background"
-          src="/assets/images/pacho_sprinkle_preview_transparent.png"
-          alt=""
-        />
-      </div>
-    </div>
-    <div class="swiper-slide">
-      <div class="square-ratio">
-        <img class="shadowed-img" src="/assets/images/lola_mockup.png" alt="" />
+        <img class="shadowed-img" [src]="url" alt="" />
       </div>
     </div>
   </div>
@@ -72,9 +66,9 @@
     />
   </div>
   <button class="primary-btn" type="submit" [class.disabled]="!selectedFile">
-    Create My Art
+    Create Preview
   </button>
-  <!-- <div class="transition-radius"></div> -->
+  <div class="transition-radius"></div>
 </form>
 
 <app-description-swiper class="description"></app-description-swiper>

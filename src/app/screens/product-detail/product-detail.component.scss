@@ -96,10 +96,10 @@ div.back-arrow-container {
 }
 
 form.personalisation-form {
-  border-radius: 0;
+  border-radius: 40px 40px 0 0;
   background-color: $dark-font-color;
   //box-shadow: #2b2d42a1 0 3px 10px;
-  padding-bottom: 1rem;
+  padding-bottom: 40px;
   position: relative;
 
   h2 {
@@ -180,6 +180,6 @@ form.personalisation-form {
   left: 0;
   height: 40px;
   border-radius: 40px 40px 0 0;
-  background-color: $secondary-color;
+  background-color: white;
   width: 100%;
 }

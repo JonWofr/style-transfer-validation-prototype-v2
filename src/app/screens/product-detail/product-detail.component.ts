@@ -54,6 +54,7 @@ export class ProductDetailComponent implements OnInit {
       autoplay: {
         delay: 4000,
       },
+      observer: true,
     });
   }
 

@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { SwiperModule } from 'swiper/angular';
 
@@ -40,6 +41,7 @@ import {
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     SwiperModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
