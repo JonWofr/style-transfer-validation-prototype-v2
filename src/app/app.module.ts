@@ -25,6 +25,7 @@ import {
   // DEBUG_MODE,
   ScreenTrackingService,
 } from '@angular/fire/analytics';
+import { CustomFooterComponent } from './shared/components/custom-footer/custom-footer.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import {
     HomeComponent,
     DocumentCreationSuccess,
     DocumentCreationFailure,
+    CustomFooterComponent,
   ],
   imports: [
     BrowserModule,

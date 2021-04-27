@@ -3,6 +3,7 @@
 :host {
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 div.back-arrow-container {
@@ -17,7 +18,7 @@ div.back-arrow-container {
 
     & > svg {
       display: block;
-      filter: drop-shadow(0 0 5px hsl(0, 0%, 10%));
+      filter: drop-shadow(0 0 5px hsl(0, 0%, 50%));
 
       & > path {
         fill: white;
@@ -182,4 +183,8 @@ form.personalisation-form {
   border-radius: 40px 40px 0 0;
   background-color: white;
   width: 100%;
+}
+
+app-custom-footer {
+  margin-top: 3.5rem;
 }
