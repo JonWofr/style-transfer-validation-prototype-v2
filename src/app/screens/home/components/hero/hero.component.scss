@@ -27,7 +27,7 @@
   width: 100%;
   .background {
     overflow: hidden;
-    border-radius: 64px;
+    border-radius: 50px;
     height: 100%;
     width: 100%;
     bottom: 0;
@@ -67,8 +67,9 @@
     }
   }
   img {
+    position: relative;
+    bottom: -4%;
     width: 100%;
-    transform: translateY(4%);
   }
 }
 

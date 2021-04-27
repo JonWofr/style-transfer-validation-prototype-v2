@@ -133,6 +133,9 @@ form.personalisation-form {
       &[type="file"] {
         opacity: 0;
       }
+      &::placeholder {
+        color: rgb(175, 175, 175);
+      }
     }
     .custom-file-input {
       position: absolute;

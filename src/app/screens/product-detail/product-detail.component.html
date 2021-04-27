@@ -17,7 +17,11 @@
       class="swiper-slide"
     >
       <div class="square-ratio">
-        <img class="shadowed-img" [src]="url" alt="" />
+        <img
+          class="shadowed-img animate__animated animate__fadeInUp"
+          [src]="url"
+          alt=""
+        />
       </div>
     </div>
   </div>
@@ -26,7 +30,7 @@
 <div class="header container">
   <div class="title-price">
     <h2 class="product-title">Custom Mug</h2>
-    <p class="price">29.99€</p>
+    <p class="price">19.99€</p>
   </div>
   <div class="style-price">
     <h3 class="art-style">{{ selectedStyleImage?.name }} Style</h3>
@@ -41,14 +45,20 @@
   <h2>Personalisation</h2>
   <div class="form-group">
     <label for="pet-name">Pet name (optional)</label>
-    <input type="text" id="pet-name" (keyup)="petName = $event.target.value" />
+    <input
+      type="text"
+      id="pet-name"
+      (keyup)="petName = $event.target.value"
+      placeholder="Lucky"
+    />
   </div>
   <div class="form-group">
-    <label for="pet-birth-month">Pet birthmonth (optional)</label>
+    <label for="pet-birth-month">Pet birthmonth + year (optional)</label>
     <input
       type="text"
       id="pet-birth-month"
       (keyup)="petBirthMonth = $event.target.value"
+      placeholder="April 2017"
     />
   </div>
   <div class="form-group">

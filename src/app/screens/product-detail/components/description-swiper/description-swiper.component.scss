@@ -32,10 +32,21 @@
       margin-bottom: 1rem;
     }
 
-    p {
+    p,
+    ul,
+    ol,
+    li {
       color: $dark-font-color;
       font-size: 1.3rem;
       margin-bottom: 1rem;
+    }
+
+    ul li {
+      list-style: none;
+    }
+    ol li {
+      list-style: inside;
+      list-style-type: upper-roman;
     }
   }
 }
