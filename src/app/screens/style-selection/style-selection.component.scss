@@ -12,6 +12,10 @@ div.back-arrow-container {
 
     & > svg {
       display: block;
+
+      & > path {
+        fill: $dark-font-color;
+      }
     }
   }
 }

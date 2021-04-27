@@ -18,7 +18,7 @@ div.back-arrow-container {
 
     & > svg {
       display: block;
-      filter: drop-shadow(0 0 5px hsl(0, 0%, 50%));
+      filter: drop-shadow(0 0 5px hsla(0, 0%, 30%, 0.5));
 
       & > path {
         fill: white;
@@ -135,7 +135,7 @@ form.personalisation-form {
         opacity: 0;
       }
       &::placeholder {
-        color: rgb(175, 175, 175);
+        color: #afafaf;
       }
     }
     .custom-file-input {
