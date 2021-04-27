@@ -3,6 +3,7 @@
 :host {
   background-color: $dark-font-color;
   display: block;
+  position: relative;
 
   div.back-arrow-container {
     position: absolute;
@@ -16,7 +17,7 @@
 
       & > svg {
         display: block;
-        filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.7));
+        filter: drop-shadow(0 0 5px hsl(0, 0%, 50%));
 
         & > path {
           fill: white;
