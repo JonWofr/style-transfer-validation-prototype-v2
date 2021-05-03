@@ -26,6 +26,7 @@ import {
   ScreenTrackingService,
 } from '@angular/fire/analytics';
 import { CustomFooterComponent } from './shared/components/custom-footer/custom-footer.component';
+import { LandingPageTemplateComponent } from './screens/home/components/landing-page-template/landing-page-template.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { CustomFooterComponent } from './shared/components/custom-footer/custom-
     DocumentCreationSuccess,
     DocumentCreationFailure,
     CustomFooterComponent,
+    LandingPageTemplateComponent,
   ],
   imports: [
     BrowserModule,

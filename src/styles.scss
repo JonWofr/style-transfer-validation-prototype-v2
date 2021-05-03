@@ -23,17 +23,11 @@
 }
 
 html {
-  position: relative;
   font-size: 12px;
-  height: 100%;
 }
 
 body {
   background-color: white;
-  height: 100%;
-  &.fixed {
-    overflow: hidden;
-  }
 }
 
 .container {

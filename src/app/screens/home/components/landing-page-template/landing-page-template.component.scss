@@ -1,0 +1,25 @@
+@import "styles/style.scss";
+
+:host {
+  box-sizing: border-box;
+}
+
+.container {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+div,
+p {
+  color: #a3b7d8;
+}
+
+.hero-paragraph,
+.section-paragraph {
+  font-size: 20px;
+  line-height: 30px;
+}
+
+.text-sm {
+  font-size: 18px;
+}
