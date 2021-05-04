@@ -27,6 +27,7 @@ import {
 } from '@angular/fire/analytics';
 import { CustomFooterComponent } from './shared/components/custom-footer/custom-footer.component';
 import { LandingPageTemplateComponent } from './screens/home/components/landing-page-template/landing-page-template.component';
+import { NgsRevealConfig, NgsRevealModule } from 'ngx-scrollreveal';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { LandingPageTemplateComponent } from './screens/home/components/landing-
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireAnalyticsModule,
+    NgsRevealModule,
   ],
   providers: [
     RouterStateService,

@@ -1,7 +1,36 @@
 @import "../../../colors.scss";
 
+:host {
+  display: block;
+  height: 100%;
+  position: relative;
+  overflow-y: auto;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -140px;
+    right: -100px;
+    width: 1440px;
+    height: 324px;
+    background-image: url("/assets/landing-page-template/images/header-illustration-dark.svg");
+    z-index: -1;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -50px;
+    width: 728px;
+    height: 458px;
+    background-image: url("/assets/landing-page-template/images/features-illustration-dark.svg");
+    z-index: -1;
+  }
+}
+
 div.back-arrow-container {
-  position: fixed;
+  position: absolute;
   top: 2rem;
   left: 2rem;
   z-index: 2;
@@ -12,47 +41,25 @@ div.back-arrow-container {
 
     & > svg {
       display: block;
+      filter: drop-shadow(0 0 5px hsla(0, 0%, 30%, 0.5));
 
       & > path {
-        fill: $dark-font-color;
+        fill: white;
       }
     }
   }
 }
 
 header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  width: 100%;
   display: flex;
   justify-content: center;
-  background-color: white;
 
   & > h1 {
     font-family: m-bold;
     font-size: 2rem;
     line-height: 2rem;
-    padding: calc(2.5rem + 12px - 1rem);
+    padding-top: calc(2.5rem + 12px - 1rem);
   }
-}
-
-div.container {
-  padding-top: calc(2 * (2.5rem + 12px - 1rem) + 2rem);
-}
-
-.header {
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  margin-bottom: 2rem;
-  position: sticky;
-  top: 0;
 }
 
 .grid {
@@ -61,24 +68,21 @@ div.container {
   gap: 2rem;
 
   div.style {
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     img {
-      border-radius: 40px;
+      border-radius: 10px;
       height: 100%;
       object-fit: cover;
       object-position: bottom;
     }
-    h3.style-title {
-      height: initial;
-      color: $dark-font-color;
-      text-align: center;
-      bottom: 0;
-      padding-top: 1rem;
-      padding-bottom: 0.5rem;
-      width: 100%;
-      border-radius: 30px;
+    p {
+      margin-top: 1rem;
       font-family: m-bold;
-      font-weight: 400;
+      color: $subheading-color;
+      font-size: 1.125rem;
     }
   }
 }

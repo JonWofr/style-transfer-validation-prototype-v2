@@ -15,7 +15,11 @@
 </header>
 <div class="container">
   <div class="grid">
-    <div *ngFor="let styleImage of styleImages" class="style">
+    <div
+      *ngFor="let styleImage of styleImages; let i = index"
+      class="style"
+      [ngsReveal]="{ delay: i * 100 }"
+    >
       <div
         class="square-ratio"
         routerLink="/product-detail"
@@ -23,7 +27,7 @@
       >
         <img [src]="styleImage.publicUrl" alt="" />
       </div>
-      <h3 class="style-title">{{ styleImage.name }}</h3>
+      <p>{{ styleImage.name }}</p>
     </div>
   </div>
 </div>
