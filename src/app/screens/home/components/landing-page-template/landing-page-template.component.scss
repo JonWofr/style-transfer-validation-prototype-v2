@@ -1,4 +1,5 @@
 @import "styles/style.scss";
+@import "../../../../../colors.scss";
 
 :host {
   box-sizing: border-box;
@@ -9,17 +10,40 @@
   padding-bottom: 0;
 }
 
-div,
-p {
-  color: #a3b7d8;
+h1,
+h2,
+h3 {
+  font-family: m-bold;
 }
 
-.hero-paragraph,
-.section-paragraph {
-  font-size: 20px;
-  line-height: 30px;
+h1.hero-title {
+  font-size: 3rem;
+}
+
+h2.section-title {
+  font-size: 1.5rem;
+}
+
+h3.feature-title {
+  font-size: 1.375rem;
+}
+
+div,
+p {
+  color: $tertiary-font-color;
+}
+
+p.hero-paragraph {
+  color: $secondary-font-color;
+  font-size: 1.5rem !important;
+}
+
+p.hero-paragraph,
+p.section-paragraph {
+  font-size: 1.25rem;
+  line-height: 1.5;
 }
 
 .text-sm {
-  font-size: 18px;
+  font-size: 1.125rem;
 }

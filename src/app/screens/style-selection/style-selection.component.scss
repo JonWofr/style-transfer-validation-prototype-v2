@@ -5,6 +5,7 @@
   height: 100%;
   position: relative;
   overflow-y: auto;
+  overflow-x: hidden;
 
   &::before {
     content: "";
@@ -20,7 +21,7 @@
   &::after {
     content: "";
     position: absolute;
-    bottom: 0;
+    top: 150px;
     left: -50px;
     width: 728px;
     height: 458px;
@@ -62,26 +63,38 @@ header {
   }
 }
 
-.grid {
+div.grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
 
-  div.style {
+  & > div.style {
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    img {
-      border-radius: 10px;
-      height: 100%;
-      object-fit: cover;
-      object-position: bottom;
+    .square-ratio {
+      width: 100%;
+      padding-top: 100%;
+      position: relative;
+
+      & > img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        object-fit: cover;
+        object-position: bottom;
+        border-radius: 10px;
+        height: 100%;
+      }
     }
+
     p {
       margin-top: 1rem;
       font-family: m-bold;
-      color: $subheading-color;
+      color: $secondary-font-color;
       font-size: 1.125rem;
     }
   }

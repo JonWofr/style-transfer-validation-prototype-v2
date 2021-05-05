@@ -16,7 +16,7 @@ export const styleImages: StyleImage[] = [
     id: 'bd08a8f3025c3b93',
     publicUrl:
       'https://storage.googleapis.com/petai-validation.appspot.com/v2/style-images/sprinkle.jpg',
-    name: 'Sprinkle',
+    name: 'Watercolor',
     mockupUrls: [
       '/assets/images/mug-transparent/mug_mockup_sprinkle.png',
       '/assets/images/mug-background-mockups/mockup_sprinkle_melli.png',
