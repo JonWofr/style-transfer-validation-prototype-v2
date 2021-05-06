@@ -73,6 +73,7 @@ div.image-outer-container {
 }
 
 div.container {
+  padding-bottom: 0;
   & > section:first-child {
     display: flex;
     justify-content: space-between;

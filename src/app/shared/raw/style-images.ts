@@ -26,7 +26,7 @@ export const styleImages: StyleImage[] = [
   {
     id: '56d9a4de476a54bd',
     publicUrl:
-      'https://storage.googleapis.com/petai-validation.appspot.com/v2/style-images/modern_strokes.jpg',
+      'https://storage.googleapis.com/petai-validation.appspot.com/v2/style-images/modern-strokes.jpg',
     name: 'Modern Strokes',
     mockupUrls: [
       '/assets/images/mug-transparent/mug_mockup_modern-strokes.png',
@@ -37,7 +37,7 @@ export const styleImages: StyleImage[] = [
   {
     id: '669611e3d06fc96e',
     publicUrl:
-      'https://storage.googleapis.com/petai-validation.appspot.com/v2/style-images/abstract.jpg',
+      'https://storage.googleapis.com/petai-validation.appspot.com/v2/style-images/colorful-shapes.jpg',
     name: 'Abstract',
     mockupUrls: [
       '/assets/images/mug-transparent/mug_mockup_abstract.png',
@@ -48,7 +48,7 @@ export const styleImages: StyleImage[] = [
   {
     id: '6b2a7f5cbc459bad',
     publicUrl:
-      'https://storage.googleapis.com/petai-validation.appspot.com/v2/style-images/blue_monsoon.jpg',
+      'https://storage.googleapis.com/petai-validation.appspot.com/v2/style-images/blue-monsoon.jpg',
     name: 'Blue Monsoon',
     mockupUrls: [
       '/assets/images/mug-transparent/mug_mockup_blue-monsoon.png',
