@@ -3,18 +3,6 @@
 :host {
   display: block;
   position: relative;
-
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: calc(1440px / 4);
-    height: calc(263px / 4);
-    background-image: url("/assets/landing-page-template/images/cta-illustration-dark.svg");
-    background-size: cover;
-    z-index: -1;
-  }
 }
 
 footer {
@@ -44,7 +32,7 @@ footer {
       & > li {
         color: $tertiary-font-color;
         font-family: m-reg;
-        font-size: 1rem;
+        font-size: 1.25rem;
         text-align: center;
       }
     }
@@ -68,7 +56,7 @@ footer {
     & > h6 {
       color: $primary-font-color;
       font-family: m-bold;
-      font-size: 1rem;
+      font-size: 1.25rem;
       margin-bottom: 0.5rem;
       text-align: center;
     }
@@ -77,6 +65,14 @@ footer {
   & > p {
     color: $tertiary-font-color;
     font-family: m-reg;
-    font-size: 1rem;
+    font-size: 1.25rem;
   }
+}
+
+img.svg {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  z-index: -1;
 }

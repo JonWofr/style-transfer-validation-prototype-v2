@@ -4,7 +4,7 @@ div.toggle {
   display: flex;
   justify-content: space-around;
   h4 {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     padding-bottom: 0.5rem;
     &.active {
       border-bottom: 2px solid $accent-color;
@@ -17,7 +17,7 @@ div.swiper-product-info {
   .swiper-slide {
     h5 {
       margin: 1.5rem 0 1rem 0;
-      font-size: 1.25rem;
+      font-size: 1.5rem;
     }
 
     p,
@@ -25,7 +25,7 @@ div.swiper-product-info {
     ol,
     li {
       color: $tertiary-font-color;
-      font-size: 1.125rem;
+      font-size: 1.25rem;
       margin-bottom: 1rem;
     }
 

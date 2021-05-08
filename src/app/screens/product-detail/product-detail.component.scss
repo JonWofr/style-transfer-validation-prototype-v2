@@ -80,14 +80,15 @@ div.container {
     align-items: flex-end;
 
     & > h1 {
-      font-size: 1.5rem;
+      font-size: 1.75rem;
     }
 
     & > p {
       color: $secondary-font-color;
+      font-size: 1rem;
 
       & > span {
-        font-size: 1.5rem;
+        font-size: 1.75rem;
         color: $primary-font-color;
       }
     }
@@ -95,7 +96,7 @@ div.container {
 
   & > form.personalisation-form {
     h2 {
-      font-size: 1.5rem;
+      font-size: 1.75rem;
       font-family: m-reg;
       margin-bottom: 1rem;
     }
@@ -127,6 +128,7 @@ div.container {
 
         p {
           color: $primary-font-color;
+          font-size: 1.25rem;
         }
         button {
           background-color: $primary-background-color;
@@ -136,6 +138,7 @@ div.container {
           height: 100%;
           border-radius: 4px;
           width: calc(50% + 1.5rem);
+          font-size: 1.25rem;
         }
       }
       input {
@@ -149,6 +152,7 @@ div.container {
 
         &:not([type="file"]) {
           color: $primary-font-color;
+          font-size: 1.25rem;
           &::placeholder {
             color: $placeholder-font-color;
           }
