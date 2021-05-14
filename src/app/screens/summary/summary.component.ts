@@ -38,7 +38,7 @@ export class SummaryComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     const routerState = this.routerStateService.state;
     if (!routerState) {
-      this.router.navigate(['product-detail'], {
+      this.router.navigate(['image-upload'], {
         queryParamsHandling: 'preserve',
       });
       return;

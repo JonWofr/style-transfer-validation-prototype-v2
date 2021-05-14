@@ -26,7 +26,6 @@
 <div class="container">
   <section>
     <h1 class="art-style">{{ selectedStyleImage?.name }} Style</h1>
-    <p class="price">VAT incl. <span>19.99£</span></p>
   </section>
   <hr class="seperator" />
   <form
@@ -34,25 +33,7 @@
     class="personalisation-form"
     ngNativeValidate
   >
-    <h2>Personalisation</h2>
-    <div class="form-group">
-      <label for="pet-name">Pet name (optional)</label>
-      <input
-        type="text"
-        id="pet-name"
-        (keyup)="petName = $event.target.value"
-        placeholder="Lucky"
-      />
-    </div>
-    <div class="form-group">
-      <label for="pet-birth-month">Pet birthmonth + year (optional)</label>
-      <input
-        type="text"
-        id="pet-birth-month"
-        (keyup)="petBirthMonth = $event.target.value"
-        placeholder="April 2017"
-      />
-    </div>
+    <h2>Upload</h2>
     <div class="form-group">
       <label for="pet-picture">Pet picture</label>
       <div class="custom-file-input">
@@ -68,11 +49,10 @@
       />
     </div>
     <button class="primary-btn" type="submit" [class.disabled]="!selectedFile">
-      Create Free Preview
+      Submit Picture
     </button>
   </form>
+  <shared-photo-guide [displayHeader]="false"></shared-photo-guide>
   <hr class="seperator" />
-  <app-description-swiper class="description"></app-description-swiper>
-  <hr class="seperator" style="margin-bottom: 0" />
 </div>
 <app-custom-footer></app-custom-footer>

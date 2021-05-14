@@ -20,11 +20,11 @@ import { styleImages } from 'src/app/shared/raw/style-images';
 SwiperCore.use([Thumbs, Controller, Autoplay, EffectCoverflow, Pagination]);
 
 @Component({
-  selector: 'app-product-detail',
-  templateUrl: './product-detail.component.html',
-  styleUrls: ['./product-detail.component.scss'],
+  selector: 'app-image-upload',
+  templateUrl: './image-upload.component.html',
+  styleUrls: ['./image-upload.component.scss'],
 })
-export class ProductDetailComponent implements OnInit {
+export class ImageUploadComponent implements OnInit {
   selectedStyleImage: StyleImage;
   selectedFile: File;
   petName: string;
@@ -72,8 +72,6 @@ export class ProductDetailComponent implements OnInit {
   onSubmitForm(submitEvent: Event) {
     submitEvent.preventDefault();
     this.routerStateService.state = {
-      petName: this.petName,
-      petBirthMonth: this.petBirthMonth,
       selectedFile: this.selectedFile,
     };
     this.router.navigate(['summary'], {

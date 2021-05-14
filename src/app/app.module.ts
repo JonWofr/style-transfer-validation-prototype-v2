@@ -28,6 +28,8 @@ import {
 import { CustomFooterComponent } from './shared/components/custom-footer/custom-footer.component';
 import { LandingPageTemplateComponent } from './screens/home/components/landing-page-template/landing-page-template.component';
 import { NgsRevealConfig, NgsRevealModule } from 'ngx-scrollreveal';
+import { ImageUploadComponent } from './screens/image-upload/image-upload.component';
+import { PhotoGuideComponent } from './shared/components/photo-guide/photo-guide.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { NgsRevealConfig, NgsRevealModule } from 'ngx-scrollreveal';
     DocumentCreationFailure,
     CustomFooterComponent,
     LandingPageTemplateComponent,
+    ImageUploadComponent,
+    PhotoGuideComponent,
   ],
   imports: [
     BrowserModule,

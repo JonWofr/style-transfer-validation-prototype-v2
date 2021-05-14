@@ -1,5 +1,5 @@
 <div class="back-arrow-container">
-  <a routerLink="/product-detail" queryParamsHandling="preserve">
+  <a routerLink="/image-upload" queryParamsHandling="preserve">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="24"
@@ -17,26 +17,11 @@
 </div>
 <div class="container">
   <section>
-    <h1>Personalisation Overiew</h1>
-    <ul>
-      <li>
-        <p>Pet name</p>
-        <p>{{ petName || "Not provided" }}</p>
-      </li>
-      <li>
-        <p>Pet birthmonth</p>
-        <p>{{ petBirthMonth || "Not provided" }}</p>
-      </li>
-    </ul>
-  </section>
-  <hr class="seperator" />
-  <section>
-    <h2>Where should we send the preview to?</h2>
+    <h2>Where should we send the artwork to?</h2>
     <div class="paragraphs-container">
-      <p>We will get back to you within one day.</p>
+      <p>Your artwork will be ready within two days</p>
       <p>
-        If you haven't heard from us after one day, please also check your spam
-        folder.
+        We will send a link to your mail where you can download the artwork.
       </p>
     </div>
     <form ngNativeValidate (submit)="onSubmitForm($event)">

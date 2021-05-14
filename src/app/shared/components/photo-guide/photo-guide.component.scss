@@ -1,0 +1,66 @@
+@import "../../../../colors.scss";
+
+.photo-guide-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+  align-items: center;
+  overflow: hidden;
+  margin-top: -20px;
+  img.demo-image {
+    transform: scale(1.3);
+    width: 100%;
+    border-radius: 15px;
+  }
+  .info-text {
+    color: white;
+    ul {
+      padding: 2rem 1rem;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 800px;
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+      h2 {
+        font-family: pf-reg;
+        font-weight: 500;
+        font-size: 2.4rem;
+        margin-bottom: 3rem;
+      }
+      li {
+        font-family: m-light;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        margin-bottom: 2.5rem;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+        img.decorater {
+          max-height: 4rem;
+          margin-right: 1rem;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1500px) {
+  .photo-guide-wrapper {
+    &.withImage {
+      grid-template-columns: 1fr 1fr;
+
+      .info-text ul {
+        padding-left: 5rem;
+      }
+    }
+    .info-text {
+      ul {
+        max-width: 1000px;
+        padding-left: 5rem;
+      }
+    }
+  }
+}

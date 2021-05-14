@@ -1,0 +1,29 @@
+<div class="photo-guide-wrapper" [class.withImage]="displayExampleImage">
+  <img
+    *ngIf="displayExampleImage"
+    class="demo-image"
+    src="\assets\landing-page-template\images\feature-01-dark.svg"
+    alt=""
+  />
+  <div class="info-text">
+    <ul>
+      <h2 *ngIf="displayHeader">Ein paar Tipps für das perfekte Foto</h2>
+      <li>
+        <img class="decorater" src="/assets/icons/green-checkmark.svg" alt="" />
+        Take your photo at eye level with your pet
+      </li>
+      <li>
+        <img class="decorater" src="/assets/icons/green-checkmark.svg" alt="" />
+        Try to make it a close up
+      </li>
+      <li>
+        <img class="decorater" src="/assets/icons/red-x.svg" alt="" />
+        Avoid bad lighting
+      </li>
+      <li>
+        <img class="decorater" src="/assets/icons/red-x.svg" alt="" />
+        Avoid uploading blurry photos
+      </li>
+    </ul>
+  </div>
+</div>
