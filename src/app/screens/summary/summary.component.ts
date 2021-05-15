@@ -18,8 +18,6 @@ declare const fbq: Function;
   styleUrls: ['./summary.component.scss'],
 })
 export class SummaryComponent implements OnInit {
-  petName: string;
-  petBirthMonth: string;
   selectedFile: File;
   imageSrc: string;
   email: string;
@@ -43,15 +41,12 @@ export class SummaryComponent implements OnInit {
       });
       return;
     }
-    this.petName = routerState.petName;
-    this.petBirthMonth = routerState.petBirthMonth;
     this.selectedFile = routerState.selectedFile;
     this.routerStateService.clearState();
     this.imageSrc = await this.readFile(this.selectedFile);
 
-    const styleImageId = this.activatedRoute.snapshot.queryParamMap.get(
-      'styleImageId'
-    );
+    const styleImageId =
+      this.activatedRoute.snapshot.queryParamMap.get('styleImageId');
     if (!styleImageId) {
       this.router.navigateByUrl('/styles-selection');
       return;
@@ -111,8 +106,6 @@ export class SummaryComponent implements OnInit {
       styleImageName: this.selectedStyleImage.name,
       status: 'PENDING',
       creationDate: firebase.default.firestore.Timestamp.fromMillis(Date.now()),
-      petName: this.petName ?? null,
-      petBirthMonth: this.petBirthMonth ?? null,
     };
     const documentReference = await this.firestore
       .collection('stylization-jobs-v2')

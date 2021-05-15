@@ -9,11 +9,7 @@ import SwiperCore, {
   EffectCoverflow,
   Pagination,
 } from 'swiper/core';
-import {
-  ActivatedRoute,
-  ActivatedRouteSnapshot,
-  Router,
-} from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { StyleImage } from 'src/app/shared/models/style-image.model';
 import { styleImages } from 'src/app/shared/raw/style-images';
 
@@ -37,9 +33,8 @@ export class ImageUploadComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const styleImageId = this.activatedRoute.snapshot.queryParamMap.get(
-      'styleImageId'
-    );
+    const styleImageId =
+      this.activatedRoute.snapshot.queryParamMap.get('styleImageId');
     if (!styleImageId) {
       this.router.navigateByUrl('/styles-selection');
       return;

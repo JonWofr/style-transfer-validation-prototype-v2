@@ -1,0 +1,48 @@
+<div class="back-arrow-container">
+  <a routerLink="/mug-preview" queryParamsHandling="preserve">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+    >
+      <path d="M0 12l9-8v6h15v4h-15v6z" />
+    </svg>
+  </a>
+</div>
+<div class="image-outer-container">
+  <div class="image-inner-container">
+    <img [src]="stylizedImage?.mugPreviewImagePublicUrl" alt="" />
+  </div>
+</div>
+<div class="container">
+  <section>
+    <h2>Where should we send the artwork to?</h2>
+    <div class="paragraphs-container">
+      <p>Your artwork will be ready within two days.</p>
+      <p>
+        We will send you a mail containing a link which you can then use to
+        download your artwork.
+      </p>
+    </div>
+    <form ngNativeValidate (submit)="onSubmitForm($event)">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          required
+          (keyup)="email = $event.target.value"
+          placeholder="john-doe@gmail.com"
+        />
+      </div>
+      <button class="primary-btn" type="submit" [class.disabled]="!email">
+        Submit
+      </button>
+    </form>
+  </section>
+</div>
+<div class="screen-overlay" [class.visible]="shouldShowSpinner">
+  <div class="dark-box"></div>
+  <img src="assets/images/loading-spinner.svg" alt="" />
+</div>

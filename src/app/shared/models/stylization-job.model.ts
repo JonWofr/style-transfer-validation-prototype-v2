@@ -6,6 +6,4 @@ export interface StylizationJob {
   email: string;
   status: 'PENDING' | 'COMPLETED';
   creationDate: firebase.default.firestore.Timestamp;
-  petName: string;
-  petBirthMonth: string;
 }

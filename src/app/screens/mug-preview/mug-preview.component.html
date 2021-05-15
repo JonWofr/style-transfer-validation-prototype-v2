@@ -1,5 +1,5 @@
 <div class="back-arrow-container">
-  <a routerLink="/styles-selection">
+  <a routerLink="/artwork-preview" queryParamsHandling="preserve">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="24"
@@ -12,12 +12,13 @@
 </div>
 <div class="swiper-container swiper-preview">
   <div class="swiper-wrapper">
-    <div
-      *ngFor="let url of selectedStyleImage?.mockupUrls"
-      class="swiper-slide image-outer-container"
-    >
+    <div class="swiper-slide image-outer-container">
       <div class="image-inner-container">
-        <img class="shadowed-img" [src]="url" alt="" />
+        <img
+          class="shadowed-img"
+          [src]="stylizedImage?.mugPreviewImagePublicUrl"
+          alt=""
+        />
       </div>
     </div>
   </div>
@@ -25,7 +26,7 @@
 </div>
 <div class="container">
   <section>
-    <h1 class="art-style">{{ selectedStyleImage?.name }} Style</h1>
+    <h1 class="art-style">{{ stylizationJob?.styleImageName }} Style</h1>
     <p class="price">VAT incl. <span>19.99£</span></p>
   </section>
   <hr class="seperator" />
@@ -53,23 +54,7 @@
         placeholder="April 2017"
       />
     </div>
-    <div class="form-group">
-      <label for="pet-picture">Pet picture</label>
-      <div class="custom-file-input">
-        <p>{{ selectedFile?.name }}</p>
-        <button>Upload Pet Photo</button>
-      </div>
-      <input
-        type="file"
-        id="pet-picture"
-        (change)="selectedFile = $event.target.files[0]"
-        accept="image/jpeg,image/png"
-        required
-      />
-    </div>
-    <button class="primary-btn" type="submit" [class.disabled]="!selectedFile">
-      Create Free Preview
-    </button>
+    <button class="primary-btn" type="submit">Checkout</button>
   </form>
   <hr class="seperator" />
   <app-description-swiper class="description"></app-description-swiper>

@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ArtworkPreviewComponent } from './screens/artwork-preview/artwork-preview.component';
+import { CheckoutComponent } from './screens/checkout/checkout.component';
 import { DocumentCreationFailure } from './screens/document-creation-failure/document-creation-failure.component';
 import { DocumentCreationSuccess } from './screens/document-creation-success/document-creation-success.component';
 import { HomeComponent } from './screens/home/home.component';
 import { ImageUploadComponent } from './screens/image-upload/image-upload.component';
-import { ProductDetailComponent } from './screens/product-detail/product-detail.component';
+import { MugPreviewComponent } from './screens/mug-preview/mug-preview.component';
 import { StyleSelectionComponent } from './screens/style-selection/style-selection.component';
 import { SummaryComponent } from './screens/summary/summary.component';
 
@@ -13,21 +15,18 @@ const routes: Routes = [
     path: '',
     component: HomeComponent,
     pathMatch: 'full',
-    data: { animation: 'homePage' },
   },
   {
     path: 'styles-selection',
     component: StyleSelectionComponent,
-    data: { animation: 'styleSelection' },
   },
   {
     path: 'image-upload',
     component: ImageUploadComponent,
   },
   {
-    path: 'product-detail',
-    component: ProductDetailComponent,
-    data: { animation: 'productDetail' },
+    path: 'mug-preview',
+    component: MugPreviewComponent,
   },
   {
     path: 'summary',
@@ -40,6 +39,14 @@ const routes: Routes = [
   {
     path: 'failure',
     component: DocumentCreationFailure,
+  },
+  {
+    path: 'artwork-preview',
+    component: ArtworkPreviewComponent,
+  },
+  {
+    path: 'checkout',
+    component: CheckoutComponent,
   },
   {
     path: '**',
