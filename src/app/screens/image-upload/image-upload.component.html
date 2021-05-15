@@ -27,6 +27,9 @@
   <section>
     <h1 class="art-style">{{ selectedStyleImage?.name }} Style</h1>
   </section>
+  <p class="description">
+    {{ selectedStyleImage?.description }}
+  </p>
   <hr class="seperator" />
   <form
     (submit)="onSubmitForm($event)"

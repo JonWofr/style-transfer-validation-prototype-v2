@@ -94,6 +94,12 @@ div.container {
     }
   }
 
+  & > p.description {
+    font-size: 1.25rem;
+    color: $tertiary-font-color;
+    margin-top: 1rem;
+  }
+
   & > form.personalisation-form {
     h2 {
       font-size: 1.75rem;
