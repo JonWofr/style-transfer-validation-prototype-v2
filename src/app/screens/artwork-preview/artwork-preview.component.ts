@@ -1,19 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  AngularFirestore,
-  DocumentData,
-  DocumentReference,
-  DocumentSnapshot,
-  QueryDocumentSnapshot,
-  SnapshotOptions,
-} from '@angular/fire/firestore';
+import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
-import { StylizationJob } from 'src/app/shared/models/stylization-job.model';
 import { StylizedImage } from 'src/app/shared/models/stylized-image.model';
-import * as firebase from 'firebase/app';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { HttpClient } from '@angular/common/http';
 import { CollectionConverterService } from 'src/app/shared/services/collection-converter/collection-converter.service';
+import { AngularFireAnalytics } from '@angular/fire/analytics';
+
+declare const fbq: Function;
 
 @Component({
   selector: 'app-artwork-preview',
@@ -36,7 +30,8 @@ export class ArtworkPreviewComponent implements OnInit {
     private firestore: AngularFirestore,
     private storage: AngularFireStorage,
     private httpClient: HttpClient,
-    private collectionConverterService: CollectionConverterService
+    private collectionConverterService: CollectionConverterService,
+    private analytics: AngularFireAnalytics
   ) {}
 
   async ngOnInit(): Promise<void> {
@@ -65,22 +60,33 @@ export class ArtworkPreviewComponent implements OnInit {
 
   // Programmatic download is necessary because browsers prohibit a tags with the download attribute from downloading from a different orign (CORS)
   async downloadStylizedImage() {
-    const downloadUrl = await this.storage
-      .refFromURL(this.stylizedImage.publicUrl)
-      .getDownloadURL()
-      .toPromise();
+    try {
+      const downloadUrl = await this.storage
+        .refFromURL(this.stylizedImage.publicUrl)
+        .getDownloadURL()
+        .toPromise();
 
-    const stylizedImage = await this.httpClient
-      .get(downloadUrl, { responseType: 'blob' })
-      .toPromise();
-    const fileReader = new FileReader();
-    fileReader.addEventListener('load', (event: ProgressEvent<FileReader>) => {
-      const aElement = document.createElement('a');
-      aElement.setAttribute('href', event.target.result as string);
-      const urlParts = this.stylizedImage.publicUrl.split('/');
-      aElement.setAttribute('download', urlParts[urlParts.length - 1]);
-      aElement.click();
-    });
-    fileReader.readAsDataURL(stylizedImage);
+      const stylizedImage = await this.httpClient
+        .get(downloadUrl, { responseType: 'blob' })
+        .toPromise();
+      const fileReader = new FileReader();
+      fileReader.addEventListener(
+        'load',
+        (event: ProgressEvent<FileReader>) => {
+          const aElement = document.createElement('a');
+          aElement.setAttribute('href', event.target.result as string);
+          const urlParts = this.stylizedImage.publicUrl.split('/');
+          aElement.setAttribute('download', urlParts[urlParts.length - 1]);
+          aElement.click();
+          this.analytics.logEvent('download_stylized_image');
+        }
+      );
+      fileReader.readAsDataURL(stylizedImage);
+    } catch (error) {
+      this.analytics.logEvent('exception', {
+        description: error,
+        fatal: true,
+      });
+    }
   }
 }

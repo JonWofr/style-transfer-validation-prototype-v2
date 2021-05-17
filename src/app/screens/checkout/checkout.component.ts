@@ -83,7 +83,10 @@ export class CheckoutComponent implements OnInit {
         queryParams: { userEmail: this.email },
       });
     } catch (error) {
-      console.error(error);
+      this.analytics.logEvent('exception', {
+        description: error,
+        fatal: true,
+      });
       this.router.navigateByUrl('/failure');
     }
   }
