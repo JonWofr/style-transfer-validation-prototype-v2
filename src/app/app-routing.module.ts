@@ -9,6 +9,7 @@ import { ImageUploadComponent } from './screens/image-upload/image-upload.compon
 import { MugPreviewComponent } from './screens/mug-preview/mug-preview.component';
 import { StyleSelectionComponent } from './screens/style-selection/style-selection.component';
 import { SummaryComponent } from './screens/summary/summary.component';
+import { ThankYouComponent } from './screens/thank-you/thank-you.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,10 @@ const routes: Routes = [
   {
     path: 'checkout',
     component: CheckoutComponent,
+  },
+  {
+    path: 'thank-you',
+    component: ThankYouComponent,
   },
   {
     path: '**',

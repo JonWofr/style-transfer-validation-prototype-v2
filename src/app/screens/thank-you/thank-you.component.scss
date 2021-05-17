@@ -1,0 +1,32 @@
+@import "../../../colors.scss";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  background-color: $primary-background-color;
+  padding: 2rem 1.5rem;
+  box-sizing: border-box;
+
+  & > h1 {
+    font-size: 2rem;
+    color: $primary-font-color;
+    font-family: m-reg;
+    margin-bottom: 1.5rem;
+  }
+
+  & > p {
+    text-align: center;
+    color: $tertiary-font-color;
+    font-family: m-reg;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+
+    & > span {
+      font-family: m-bold;
+      color: inherit;
+    }
+  }
+}

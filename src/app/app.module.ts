@@ -34,6 +34,7 @@ import { ArtworkPreviewComponent } from './screens/artwork-preview/artwork-previ
 import { HttpClientModule } from '@angular/common/http';
 import { CollectionConverterService } from './shared/services/collection-converter/collection-converter.service';
 import { CheckoutComponent } from './screens/checkout/checkout.component';
+import { ThankYouComponent } from './screens/thank-you/thank-you.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { CheckoutComponent } from './screens/checkout/checkout.component';
     PhotoGuideComponent,
     ArtworkPreviewComponent,
     CheckoutComponent,
+    ThankYouComponent,
   ],
   imports: [
     BrowserModule,

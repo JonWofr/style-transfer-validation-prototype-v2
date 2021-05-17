@@ -11,7 +11,7 @@ import SwiperCore, {
 } from 'swiper/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
-import { StylizedImage } from 'src/app/shared/models/stylized-image';
+import { StylizedImage } from 'src/app/shared/models/stylized-image.model';
 import { CollectionConverterService } from 'src/app/shared/services/collection-converter/collection-converter.service';
 import { StylizationJob } from 'src/app/shared/models/stylization-job.model';
 
@@ -24,7 +24,7 @@ SwiperCore.use([Thumbs, Controller, Autoplay, EffectCoverflow, Pagination]);
 })
 export class MugPreviewComponent implements OnInit {
   stylizedImagesCollection = this.firestore
-    .collection('stylized-images')
+    .collection('stylized-images-v2')
     .ref.withConverter(
       this.collectionConverterService.createCollectionConverter<StylizedImage>()
     );

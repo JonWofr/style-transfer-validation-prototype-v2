@@ -2,15 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { ActivatedRoute, Router } from '@angular/router';
-import { StylizationJob } from 'src/app/shared/models/stylization-job.model';
 import { RouterStateService } from 'src/app/shared/services/router-state/router-state.service';
-import { v4 as uuidv4 } from 'uuid';
 import * as firebase from 'firebase/app';
-import { styleImages } from 'src/app/shared/raw/style-images';
-import { StyleImage } from 'src/app/shared/models/style-image.model';
 import { AngularFireAnalytics } from '@angular/fire/analytics';
-import { StylizedImage } from 'src/app/shared/models/stylized-image';
+import { StylizedImage } from 'src/app/shared/models/stylized-image.model';
 import { CollectionConverterService } from 'src/app/shared/services/collection-converter/collection-converter.service';
+import { Order } from 'src/app/shared/models/order.models';
 
 declare const fbq: Function;
 
@@ -21,23 +18,29 @@ declare const fbq: Function;
 })
 export class CheckoutComponent implements OnInit {
   stylizedImagesCollection = this.firestore
-    .collection('stylized-images')
+    .collection('stylized-images-v2')
     .ref.withConverter(
       this.collectionConverterService.createCollectionConverter<StylizedImage>()
     );
 
+  ordersCollection = this.firestore
+    .collection('orders-v2')
+    .ref.withConverter(
+      this.collectionConverterService.createCollectionConverter<Order>()
+    );
+
   stylizedImageDocumentReference?: DocumentReference<StylizedImage>;
   stylizedImage?: StylizedImage;
-  stylizationJob?: StylizationJob;
 
-  email: string;
+  email: string = '';
   shouldShowSpinner = false;
 
+  petName: string;
+  petBirthMonth: string;
+
   constructor(
-    private routerStateService: RouterStateService,
     private router: Router,
     private firestore: AngularFirestore,
-    private storage: AngularFireStorage,
     private activatedRoute: ActivatedRoute,
     private analytics: AngularFireAnalytics,
     private collectionConverterService: CollectionConverterService
@@ -59,24 +62,45 @@ export class CheckoutComponent implements OnInit {
     this.stylizedImage = stylizedImageDocument.data();
     const stylizationJobDocument =
       await this.stylizedImage.stylizationJob.get();
-    this.stylizationJob = stylizationJobDocument.data();
+    const stylizationJob = stylizationJobDocument.data();
+    this.email = stylizationJob.email;
+    this.petName = this.activatedRoute.snapshot.queryParamMap.get('petName');
+    this.petBirthMonth =
+      this.activatedRoute.snapshot.queryParamMap.get('petBirthMonth');
   }
 
   async onSubmitForm(submitEvent: Event) {
     try {
       this.shouldShowSpinner = true;
       submitEvent.preventDefault();
-
-      /*       this.analytics.logEvent('generate_lead', {
-        value: this.selectedStyleImage.name,
+      await this.createOrderDocument();
+      this.analytics.logEvent('purchase', {
+        value: 19.99,
+        currency: 'GBP',
       });
-      fbq('track', 'Lead', { content_name: this.selectedStyleImage.name }); */
-      this.router.navigate(['success'], {
+      fbq('track', 'Purchase', { value: 19.99, currency: 'GBP' });
+      this.router.navigate(['thank-you'], {
         queryParams: { userEmail: this.email },
       });
     } catch (error) {
       console.error(error);
       this.router.navigateByUrl('/failure');
     }
+  }
+
+  async createOrderDocument() {
+    const order: Order = {
+      petName: this.petName ?? null,
+      petBirthMonth: this.petBirthMonth ?? null,
+      email: this.email,
+      status: 'PENDING',
+      creationDate: firebase.default.firestore.Timestamp.fromMillis(Date.now()),
+      stylizationJob: this.stylizedImage.stylizationJob,
+      stylizedImage: this.stylizedImageDocumentReference,
+      value: 19.99,
+      currency: 'GBP',
+    };
+    const documentReference = await this.ordersCollection.add(order);
+    return documentReference.id;
   }
 }

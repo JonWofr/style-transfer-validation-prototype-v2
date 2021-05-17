@@ -9,7 +9,7 @@ import {
 } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StylizationJob } from 'src/app/shared/models/stylization-job.model';
-import { StylizedImage } from 'src/app/shared/models/stylized-image';
+import { StylizedImage } from 'src/app/shared/models/stylized-image.model';
 import * as firebase from 'firebase/app';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { HttpClient } from '@angular/common/http';
@@ -22,7 +22,7 @@ import { CollectionConverterService } from 'src/app/shared/services/collection-c
 })
 export class ArtworkPreviewComponent implements OnInit {
   stylizedImagesCollection = this.firestore
-    .collection('stylized-images')
+    .collection('stylized-images-v2')
     .ref.withConverter(
       this.collectionConverterService.createCollectionConverter<StylizedImage>()
     );

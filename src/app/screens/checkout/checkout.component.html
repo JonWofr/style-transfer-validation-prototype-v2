@@ -17,13 +17,36 @@
 </div>
 <div class="container">
   <section>
-    <h2>Where should we send the artwork to?</h2>
+    <h1>Personalisation Overiew</h1>
+    <ul>
+      <li>
+        <p>Pet name</p>
+        <p>{{ petName || "Not provided" }}</p>
+      </li>
+      <li>
+        <p>Pet birthmonth</p>
+        <p>{{ petBirthMonth || "Not provided" }}</p>
+      </li>
+    </ul>
+  </section>
+  <hr class="seperator" />
+  <section>
+    <h2>How to get hold of your customised mug ☕</h2>
     <div class="paragraphs-container">
-      <p>Your artwork will be ready within two days.</p>
       <p>
-        We will send you a mail containing a link which you can then use to
-        download your artwork.
+        Since we from PetAI have just begun our journey to provide pet-lovers
+        with pawsome customised products we sadly do not have a fully-fledged
+        out automatic payment system yet 😭
       </p>
+      <p>
+        However, we would still be more than happy to ship you the mug and put a
+        smile on your face every time you take a sip 😊
+      </p>
+      <p>
+        If you would like that to happen too just click the button below and we
+        will get in touch with you about payment instructions shortly 📧
+      </p>
+      <p>Thank you!</p>
     </div>
     <form ngNativeValidate (submit)="onSubmitForm($event)">
       <div class="form-group">
@@ -32,6 +55,7 @@
           type="email"
           id="email"
           required
+          [value]="email"
           (keyup)="email = $event.target.value"
           placeholder="john-doe@gmail.com"
         />
