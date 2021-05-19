@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./photo-guide.component.scss'],
 })
 export class PhotoGuideComponent implements OnInit {
-  @Input() displayExampleImage = true;
+  @Input() displayExampleImage = false;
   @Input() displayHeader = true;
 
   constructor() {}

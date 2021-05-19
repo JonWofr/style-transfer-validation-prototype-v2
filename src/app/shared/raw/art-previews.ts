@@ -4,57 +4,41 @@ export const artPreviews: StyleImage[] = [
   {
     id: '546d376f89e9f39e',
     publicUrl:
-      'https://storage.googleapis.com/petai-validation.appspot.com/v2/style-images/newspaper.jpg',
+      '/assets/images/art-preview/newspaper/gray_cat_style-17-selection.jpg',
     name: 'Newspaper',
+    description:
+      'Modern looking and unique. Our Newspaper style creates a stunning artwork with subtle letters shimmering through the strokes of paint.',
     mockupUrls: [
-      '/assets/images/mug-transparent/mug_mockup_newspaper.png',
-      '/assets/images/mug-background-mockups/mockup_newspaper_coco.png',
-      '/assets/images/mug-background-mockups/mockup_newspaper_miri.png',
+      '/assets/images/art-preview/newspaper/gray_cat_style-17.jpg',
+      '/assets/images/art-preview/newspaper/pacho_newspaper_enhanced.jpg',
+      '/assets/images/art-preview/newspaper/sitting_cat_style-17.jpg',
+      '/assets/images/art-preview/newspaper/dachshund_style-17.jpg',
     ],
   },
   {
     id: 'bd08a8f3025c3b93',
-    publicUrl:
-      'https://storage.googleapis.com/petai-validation.appspot.com/v2/style-images/sprinkle.jpg',
+    publicUrl: '/assets/images/art-preview/watercolor/pacho_doggo_enhanced.jpg',
     name: 'Watercolor',
+    description:
+      'Want something more colorful but not too gaudy? Then the watercolor style would be the perfect fit. It emphasizes your pet with solid strokes while keeping the background neutral with sprinkles of paint here and there.',
     mockupUrls: [
-      '/assets/images/mug-transparent/mug_mockup_watercolor.png',
-      '/assets/images/mug-background-mockups/mockup_sprinkle_melli.png',
-      '/assets/images/mug-background-mockups/mockup_sprinkle_luna.png',
-    ],
-  },
-  {
-    id: '56d9a4de476a54bd',
-    publicUrl:
-      'https://storage.googleapis.com/petai-validation.appspot.com/v2/style-images/modern-strokes.jpg',
-    name: 'Modern Strokes',
-    mockupUrls: [
-      '/assets/images/mug-transparent/mug_mockup_modern-strokes.png',
-      '/assets/images/mug-background-mockups/mockup_modern-strokes_mono.png',
-      '/assets/images/mug-background-mockups/mockup_modern-strokes_noah.png',
+      '/assets/images/art-preview/watercolor/pacho_doggo_enhanced.jpg',
+      '/assets/images/art-preview/watercolor/dachshund-reworked.jpg',
+      '/assets/images/art-preview/watercolor/black-cat-3739702_1920_doggo.jpg',
     ],
   },
   {
     id: '669611e3d06fc96e',
-    publicUrl:
-      'https://storage.googleapis.com/petai-validation.appspot.com/v2/style-images/colorful-shapes.jpg',
+    publicUrl: '/assets/images/art-preview/abstract/kitty_composition-vii.jpg',
     name: 'Abstract',
+    description:
+      "Ever wanted an artwork of your pet in a Wassily Kandinsky-like style? Now is your chance. The Abstract style turns your pet's picture into a colorful painting with big strokes.",
     mockupUrls: [
-      '/assets/images/mug-transparent/mug_mockup_abstract.png',
-      '/assets/images/mug-background-mockups/mockup_abstract_emma.png',
-      '/assets/images/mug-background-mockups/mockup_abstract_rosi.png',
-    ],
-  },
-  {
-    id: '6b2a7f5cbc459bad',
-    publicUrl:
-      'https://storage.googleapis.com/petai-validation.appspot.com/v2/style-images/blue-monsoon.jpg',
-    name: 'Blue Monsoon',
-    mockupUrls: [
-      '/assets/images/mug-transparent/mug_mockup_blue-monsoon.png',
-      '/assets/images/mug-background-mockups/mockup_blue-monsoon_luna.png',
-
-      '/assets/images/mug-background-mockups/mockup_blue-monsoon_pacho.png',
+      '/assets/images/art-preview/abstract/kitty_composition-vii.jpg',
+      '/assets/images/art-preview/abstract/output-19.jpg',
+      '/assets/images/art-preview/abstract/gray_cat_composition-vii.jpg',
+      '/assets/images/art-preview/abstract/dachshund_composition-vii.jpg',
+      '/assets/images/art-preview/abstract/output-28.jpg',
     ],
   },
 ];

@@ -36,20 +36,20 @@
     class="personalisation-form"
     ngNativeValidate
   >
-    <h2>Upload</h2>
     <div class="form-group">
-      <label for="pet-picture">Pet picture</label>
       <div class="custom-file-input">
-        <p>{{ selectedFile?.name }}</p>
-        <button>Upload Pet Photo</button>
+        <div class="background"></div>
+        <img class="upload-icon" src="/assets/icons/upload-icon.svg" alt="" />
+        <p>{{ selectedFile?.name || "Upload pet picture" }}</p>
+        <img class="picture-illustration" [src]="uploadImgSrc" alt="" />
+        <input
+          type="file"
+          id="pet-picture"
+          (change)="selectedFile = $event.target.files[0]"
+          accept="image/jpeg,image/png"
+          required
+        />
       </div>
-      <input
-        type="file"
-        id="pet-picture"
-        (change)="selectedFile = $event.target.files[0]"
-        accept="image/jpeg,image/png"
-        required
-      />
     </div>
     <button class="primary-btn" type="submit" [class.disabled]="!selectedFile">
       Submit Picture
