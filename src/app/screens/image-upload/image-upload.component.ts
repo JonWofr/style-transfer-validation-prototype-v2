@@ -66,6 +66,12 @@ export class ImageUploadComponent implements OnInit {
   }
 
   async onChangeFileInput(file: File) {
+    // If the user clicks on the file input but then selects "cancel" the value of the file input is resetted. The onChange event will still be emitted with value undefined.
+    if (!file) {
+      this.uploadImgSrc = '';
+      this.selectedFile = undefined;
+      return;
+    }
     this.uploadImgSrc = await this.readFile(file);
     this.selectedFile = file;
   }
