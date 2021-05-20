@@ -65,6 +65,21 @@ export class ImageUploadComponent implements OnInit {
     });
   }
 
+  async onChangeFileInput(file: File) {
+    this.uploadImgSrc = await this.readFile(file);
+  }
+
+  readFile(file: File): Promise<string> {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.addEventListener('load', () => {
+        resolve(fileReader.result as string);
+      });
+      fileReader.addEventListener('error', reject);
+      fileReader.readAsDataURL(file);
+    });
+  }
+
   onSubmitForm(submitEvent: Event) {
     submitEvent.preventDefault();
     this.routerStateService.state = {

@@ -45,7 +45,7 @@
         <input
           type="file"
           id="pet-picture"
-          (change)="selectedFile = $event.target.files[0]"
+          (change)="onChangeFileInput($event.target.files[0])"
           accept="image/jpeg,image/png"
           required
         />
