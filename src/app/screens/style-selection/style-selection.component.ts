@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StyleImage } from 'src/app/shared/models/style-image.model';
+import { artPreviews } from 'src/app/shared/raw/art-previews';
 import { styleImages } from 'src/app/shared/raw/style-images';
 
 @Component({
@@ -13,6 +14,6 @@ export class StyleSelectionComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    this.styleImages = styleImages;
+    this.styleImages = artPreviews;
   }
 }

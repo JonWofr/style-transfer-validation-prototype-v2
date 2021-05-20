@@ -21,6 +21,7 @@
   margin: 0 auto;
   box-shadow: 48px 16px 48px rgba(color(typography, 1), 0.12);
   transform: perspective(1000px) rotateY(10deg) translateY(2%);
+  border-radius: 4px;
 
   .lights-off & {
     box-shadow: 48px 16px 48px rgba(darken(color(bg, 1i), 35%), 0.2);

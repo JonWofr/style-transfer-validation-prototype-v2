@@ -18,16 +18,16 @@
     z-index: -1;
   }
 
-  &::after {
-    content: "";
-    position: absolute;
-    top: 150px;
-    left: -50px;
-    width: 728px;
-    height: 458px;
-    background-image: url("/assets/landing-page-template/images/features-illustration-dark.svg");
-    z-index: -1;
-  }
+  // &::after {
+  //   content: "";
+  //   position: absolute;
+  //   top: 150px;
+  //   left: -50px;
+  //   width: 728px;
+  //   height: 458px;
+  //   background-image: url("/assets/landing-page-template/images/features-illustration-dark.svg");
+  //   z-index: -1;
+  // }
 }
 
 div.back-arrow-container {
@@ -65,7 +65,7 @@ header {
 
 div.grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 2rem;
 
   & > div.style {
@@ -73,29 +73,42 @@ div.grid {
     flex-direction: column;
     align-items: center;
 
-    .square-ratio {
+    .style-box {
       width: 100%;
-      padding-top: 100%;
       position: relative;
-
-      & > img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+      img {
+        width: 100%;
+        height: 250px;
         object-fit: cover;
-        object-position: bottom;
-        border-radius: 10px;
-        height: 100%;
+        border-radius: 5px;
+      }
+      a {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: absolute;
+        background-color: $secondary-background-color;
+        width: 100%;
+        bottom: 0;
+        padding: 0.5rem 1.2rem;
+        border-radius: 0 0 5px 5px;
+        box-sizing: border-box;
+        font-family: m-semi-bold;
+        color: $primary-background-color;
+        img {
+          height: 2rem;
+          width: 2rem;
+          object-fit: contain;
+        }
       }
     }
 
     p {
-      margin-top: 1rem;
-      font-family: m-bold;
+      align-self: flex-start;
+      margin-bottom: 1rem;
+      font-family: m-semi-bold;
       color: $secondary-font-color;
-      font-size: 1.25rem;
+      font-size: 1.5rem;
     }
   }
 }

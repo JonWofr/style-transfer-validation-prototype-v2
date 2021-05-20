@@ -13,7 +13,7 @@ $color: (
     1: #ffffff,
     2: #f8f9fb,
     3: #e9edf3,
-    1i: #49458b,
+    1i: #3d3361,
     2i: #2c2f42,
     3i: #3b3e5c,
   ),
@@ -44,7 +44,7 @@ $font__family: (
   // font-family(heading)
   code: 'Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace',
   // font-family(code)
-  pre: '"Courier 10 Pitch", Courier, monospace' // font-family(pre),,,,,,,,
+  pre: '"Courier 10 Pitch", Courier, monospace' // font-family(pre),,,,,,,,,
 );
 
 $font__sizes: (
@@ -109,7 +109,7 @@ $font__scale: (
     // Text small
     7: map-get($font__sizes, eta),
     // Text smaller
-    8: map-get($font__sizes, theta) // Footer area,,,,,,,,
+    8: map-get($font__sizes, theta) // Footer area,,,,,,,,,
   ),
   mobile: (
     // i.e. $breakpoint__xs + $breakpoint__s (up to 600)
@@ -127,7 +127,7 @@ $font__scale: (
     // Text small
     7: map-get($font__sizes, eta),
     // Text smaller
-    8: map-get($font__sizes, theta) // Footer area,,,,,,,,
+    8: map-get($font__sizes, theta) // Footer area,,,,,,,,,
   ),
 );
 
@@ -138,7 +138,7 @@ $font__weight: (
   // font__weight(medium)
   semibold: 600,
   // font__weight(semibold)
-  bold: 700 // font__weight(bold),,,,,,,,
+  bold: 700 // font__weight(bold),,,,,,,,,
 );
 
 // --------------------------------------------

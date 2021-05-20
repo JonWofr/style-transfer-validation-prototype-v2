@@ -11,7 +11,7 @@ import SwiperCore, {
 } from 'swiper/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StyleImage } from 'src/app/shared/models/style-image.model';
-import { styleImages } from 'src/app/shared/raw/style-images';
+import { artPreviews } from 'src/app/shared/raw/art-previews';
 
 SwiperCore.use([Thumbs, Controller, Autoplay, EffectCoverflow, Pagination]);
 
@@ -25,6 +25,7 @@ export class ImageUploadComponent implements OnInit {
   selectedFile: File;
   petName: string;
   petBirthMonth: string;
+  uploadImgSrc = '/assets/landing-page-template/images/feature-01-dark.svg';
 
   constructor(
     private routerStateService: RouterStateService,
@@ -39,7 +40,7 @@ export class ImageUploadComponent implements OnInit {
       this.router.navigateByUrl('/styles-selection');
       return;
     }
-    const selectedStyleImage = styleImages.find(
+    const selectedStyleImage = artPreviews.find(
       (styleImage) => styleImage.id === styleImageId
     );
     if (!selectedStyleImage) {

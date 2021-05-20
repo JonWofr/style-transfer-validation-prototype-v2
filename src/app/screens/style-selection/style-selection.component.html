@@ -15,19 +15,18 @@
 </header>
 <div class="container">
   <div class="grid">
-    <div
-      *ngFor="let styleImage of styleImages; let i = index"
-      class="style"
-      [ngsReveal]="{ delay: i * 100 }"
-    >
+    <div *ngFor="let styleImage of styleImages; let i = index" class="style">
+      <p>{{ styleImage.name }}</p>
       <div
-        class="square-ratio"
+        class="style-box"
         routerLink="/image-upload"
         [queryParams]="{ styleImageId: styleImage.id }"
       >
         <img [src]="styleImage.publicUrl" alt="" />
+        <a
+          >Use This Style <img src="/assets/icons/circle-arrow.svg" alt=""
+        /></a>
       </div>
-      <p>{{ styleImage.name }}</p>
     </div>
   </div>
 </div>

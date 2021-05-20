@@ -71,6 +71,10 @@ hr.seperator {
   border: none;
 }
 
+.swiper-pagination-bullet-active {
+  background-color: $primary-background-color;
+}
+
 //fonts-----------------------------------------------------------------
 
 @font-face {
