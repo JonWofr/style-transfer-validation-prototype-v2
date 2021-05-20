@@ -25,7 +25,7 @@ export class ImageUploadComponent implements OnInit {
   selectedFile: File;
   petName: string;
   petBirthMonth: string;
-  uploadImgSrc = '/assets/landing-page-template/images/feature-01-dark.svg';
+  uploadImgSrc = '';
 
   constructor(
     private routerStateService: RouterStateService,
@@ -67,6 +67,7 @@ export class ImageUploadComponent implements OnInit {
 
   async onChangeFileInput(file: File) {
     this.uploadImgSrc = await this.readFile(file);
+    this.selectedFile = file;
   }
 
   readFile(file: File): Promise<string> {

@@ -41,7 +41,17 @@
         <div class="background"></div>
         <img class="upload-icon" src="/assets/icons/upload-icon.svg" alt="" />
         <p>{{ selectedFile?.name || "Upload pet picture" }}</p>
-        <img class="picture-illustration" [src]="uploadImgSrc" alt="" />
+        <img
+          *ngIf="uploadImgSrc != ''"
+          class="upload-img"
+          [src]="uploadImgSrc"
+          alt=""
+        />
+        <img
+          class="picture-illustration"
+          src="/assets/landing-page-template/images/feature-01-dark.svg"
+          alt=""
+        />
         <input
           type="file"
           id="pet-picture"

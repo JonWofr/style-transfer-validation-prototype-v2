@@ -18,6 +18,15 @@
   }
 }
 
+.upload-img {
+  margin-top: 1rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  transform: translateY(1rem) scale(1.5);
+}
+
 .swiper-pagination {
   background-color: rgba(255, 255, 255, 0.459);
   backdrop-filter: blur(5px);
@@ -164,6 +173,7 @@ div.container {
           font-family: m-semi-bold;
           font-size: 1.3rem;
           margin-bottom: auto;
+          text-align: center;
         }
         img.upload-icon {
           height: 4rem;
