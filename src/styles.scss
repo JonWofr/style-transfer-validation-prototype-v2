@@ -75,6 +75,18 @@ hr.seperator {
   background-color: $primary-background-color;
 }
 
+.rectangle-3-2 {
+  background-color: red;
+  position: relative;
+  width: 100%;
+  padding-top: 66.66%; /* 3:2 Aspect Ratio */
+  & > * {
+    top: 0;
+    left: 0;
+    position: absolute;
+  }
+}
+
 //fonts-----------------------------------------------------------------
 
 @font-face {

@@ -7,7 +7,7 @@ export const artPreviews: StyleImage[] = [
       '/assets/images/art-preview/newspaper/gray_cat_style-17-selection.jpg',
     name: 'Newspaper',
     description:
-      'Modern looking and unique. Our Newspaper style creates a stunning artwork with subtle letters shimmering through the strokes of paint.',
+      'Modern and unique. Our Newspaper style creates a stunning artwork with subtle letters shimmering through the strokes of paint.',
     mockupUrls: [
       '/assets/images/art-preview/newspaper/gray_cat_style-17.jpg',
       '/assets/images/art-preview/newspaper/pacho_newspaper_enhanced.jpg',
@@ -20,7 +20,7 @@ export const artPreviews: StyleImage[] = [
     publicUrl: '/assets/images/art-preview/watercolor/pacho_doggo_enhanced.jpg',
     name: 'Watercolor',
     description:
-      'Want something more colorful but not too gaudy? Then the watercolor style would be the perfect fit. It emphasizes your pet with solid strokes while keeping the background neutral with sprinkles of paint here and there.',
+      'Want something more colorful but not too gaudy? Then the watercolor style would be the perfect choice. It emphasizes your pet with solid strokes while keeping the background neutral with sprinkles of paint here and there.',
     mockupUrls: [
       '/assets/images/art-preview/watercolor/pacho_doggo_enhanced.jpg',
       '/assets/images/art-preview/watercolor/dachshund-reworked.jpg',
