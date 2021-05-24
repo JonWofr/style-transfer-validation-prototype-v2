@@ -1,0 +1,143 @@
+@import "../../../../colors.scss";
+
+nav {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 100%;
+  //background-color: $secondary-color;
+  padding: 2.5rem 2rem 2.5rem 2rem;
+  box-sizing: border-box;
+  z-index: 20;
+}
+a {
+  text-decoration: none;
+}
+
+.nav.mobile.light-version {
+  position: absolute;
+  z-index: 1;
+  width: 5rem;
+  height: 5rem;
+  padding: none;
+  border-radius: 50%;
+  left: 1rem;
+  top: 1rem;
+  box-shadow: 0px 3px 6px #00000029;
+
+  .nav-expandable-section {
+    width: 100%;
+  }
+  .top-section .nav-top-container {
+    &.bag,
+    &.logo {
+      display: none;
+    }
+  }
+}
+
+nav.mobile {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 16px 1rem 16px;
+  position: relative;
+
+  a {
+    margin: 0;
+  }
+
+  div.top-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    div.nav-top-container {
+      width: 33%;
+      text-align: center;
+    }
+    img.burger-menu {
+      height: 2rem;
+    }
+  }
+}
+div.nav-expandable-section {
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background-color: #292241;
+  a {
+    margin: 2rem 0 2rem 0;
+    padding: 0.5rem;
+    font-size: 20px;
+    &.nav-el {
+      --animate-duration: 1s;
+    }
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 2rem;
+    padding: 1rem;
+    height: 2.5rem;
+    cursor: pointer;
+  }
+}
+
+nav.transparent-background {
+  background-color: transparent;
+}
+
+a {
+  font-size: 1.2rem;
+  margin: 0 1rem 0 1rem;
+  color: #edf2f4;
+  &.logo img {
+    height: 3.5rem;
+  }
+  &:last-of-type {
+    margin-right: 0;
+  }
+  &:first-of-type {
+    margin-left: 0;
+  }
+
+  &.bag {
+    display: inline-flex;
+    justify-content: center;
+    align-items: baseline;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+
+    img {
+      height: 2rem;
+    }
+
+    span {
+      margin-left: -0.7rem;
+      //background-color: $primary-color;
+      border-radius: 50%;
+      font-family: m-reg;
+      display: inline-block;
+      text-align: center;
+      height: 1.5rem;
+      width: 1.5rem;
+      line-height: 1.6rem;
+      font-size: 1rem;
+      cursor: default;
+    }
+  }
+}
+
+@media (min-width: 1500px) {
+  nav {
+    padding: 1rem 5rem 1rem 5rem;
+  }
+}

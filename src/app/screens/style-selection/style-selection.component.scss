@@ -4,19 +4,17 @@
   display: block;
   height: 100%;
   position: relative;
-  overflow-y: auto;
-  overflow-x: hidden;
 
-  &::before {
-    content: "";
-    position: absolute;
-    top: -140px;
-    right: -100px;
-    width: 1440px;
-    height: 324px;
-    background-image: url("/assets/landing-page-template/images/header-illustration-dark.svg");
-    z-index: -1;
-  }
+  // &::before {
+  //   content: "";
+  //   position: absolute;
+  //   top: -140px;
+  //   right: -100px;
+  //   width: 1440px;
+  //   height: 324px;
+  //   background-image: url("/assets/landing-page-template/images/header-illustration-dark.svg");
+  //   z-index: -1;
+  // }
 
   // &::after {
   //   content: "";
