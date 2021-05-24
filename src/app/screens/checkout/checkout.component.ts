@@ -83,7 +83,8 @@ export class CheckoutComponent implements OnInit {
         queryParams: { userEmail: this.email },
       });
     } catch (error) {
-      this.analytics.logEvent('exception', {
+      console.error(error);
+      await this.analytics.logEvent('exception', {
         description: error,
         fatal: true,
       });

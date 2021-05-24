@@ -77,8 +77,10 @@ export class ImageUploadComponent implements OnInit {
       }
       this.uploadImgSrc = await this.readFile(file);
       this.selectedFile = file;
+      this.analytics.logEvent('upload_button_click');
     } catch (error) {
-      this.analytics.logEvent('exception', {
+      console.error(error);
+      await this.analytics.logEvent('exception', {
         description: error,
         fatal: true,
       });

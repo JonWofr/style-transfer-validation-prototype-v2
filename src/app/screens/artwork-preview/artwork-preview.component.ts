@@ -121,10 +121,12 @@ export class ArtworkPreviewComponent implements OnInit {
         .toPromise();
       return stylizedImageBlob;
     } catch (error) {
-      this.analytics.logEvent('exception', {
+      console.error(error);
+      await this.analytics.logEvent('exception', {
         description: error,
         fatal: true,
       });
+      this.router.navigateByUrl('/failure');
     }
   }
 }
