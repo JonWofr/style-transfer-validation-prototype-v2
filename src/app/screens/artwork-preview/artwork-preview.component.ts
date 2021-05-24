@@ -8,6 +8,7 @@ import { CollectionConverterService } from 'src/app/shared/services/collection-c
 import { AngularFireAnalytics } from '@angular/fire/analytics';
 
 declare const fbq: Function;
+declare const navigator: any;
 
 @Component({
   selector: 'app-artwork-preview',
@@ -58,30 +59,67 @@ export class ArtworkPreviewComponent implements OnInit {
     this.stylizedImage.doesLike = doesLike;
   }
 
+  async onClickShareButton() {
+    if (navigator.share) {
+      try {
+        const stylizedImageBlob = await this.downloadStylizedImage();
+        const urlParts = this.stylizedImage.publicUrl.split('/');
+        const stylizedImageFile = new File(
+          [stylizedImageBlob],
+          urlParts[urlParts.length - 1]
+        );
+        if (
+          navigator.canShare &&
+          navigator.canShare({ files: [stylizedImageFile] })
+        ) {
+          console.info('Support for file sharing');
+          await navigator.share({
+            files: [stylizedImageFile],
+            title: 'Pictures',
+            text: 'Our Pictures.',
+          });
+        } else {
+          console.info('No support for file sharing');
+          await navigator.share({
+            title: 'MDN',
+            text: 'Learn web development on MDN!',
+            url: 'https://developer.mozilla.org',
+          });
+        }
+        console.info('shaerd successfully');
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      console.info('no sharing api');
+    }
+  }
+
+  async onClickDownloadButton() {
+    const stylizedImageBlob = await this.downloadStylizedImage();
+    const fileReader = new FileReader();
+    fileReader.addEventListener('load', (event: ProgressEvent<FileReader>) => {
+      const aElement = document.createElement('a');
+      aElement.setAttribute('href', event.target.result as string);
+      const urlParts = this.stylizedImage.publicUrl.split('/');
+      aElement.setAttribute('download', urlParts[urlParts.length - 1]);
+      aElement.click();
+      this.analytics.logEvent('download_stylized_image');
+    });
+    fileReader.readAsDataURL(stylizedImageBlob);
+  }
+
   // Programmatic download is necessary because browsers prohibit a tags with the download attribute from downloading from a different orign (CORS)
-  async downloadStylizedImage() {
+  async downloadStylizedImage(): Promise<Blob> {
     try {
       const downloadUrl = await this.storage
         .refFromURL(this.stylizedImage.publicUrl)
         .getDownloadURL()
         .toPromise();
-
-      const stylizedImage = await this.httpClient
+      const stylizedImageBlob = await this.httpClient
         .get(downloadUrl, { responseType: 'blob' })
         .toPromise();
-      const fileReader = new FileReader();
-      fileReader.addEventListener(
-        'load',
-        (event: ProgressEvent<FileReader>) => {
-          const aElement = document.createElement('a');
-          aElement.setAttribute('href', event.target.result as string);
-          const urlParts = this.stylizedImage.publicUrl.split('/');
-          aElement.setAttribute('download', urlParts[urlParts.length - 1]);
-          aElement.click();
-          this.analytics.logEvent('download_stylized_image');
-        }
-      );
-      fileReader.readAsDataURL(stylizedImage);
+      return stylizedImageBlob;
     } catch (error) {
       this.analytics.logEvent('exception', {
         description: error,
