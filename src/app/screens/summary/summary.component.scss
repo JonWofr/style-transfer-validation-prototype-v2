@@ -12,34 +12,13 @@
     width: calc(728px / 2);
     height: calc(458px / 2);
     transform: rotate(180deg);
-    background-image: url("/assets/landing-page-template/images/features-illustration-dark.svg");
+    //background-image: url("/assets/landing-page-template/images/features-illustration-dark.svg");
     background-size: cover;
     z-index: -1;
   }
 
-  div.back-arrow-container {
-    position: absolute;
-    top: 2rem;
-    left: 2rem;
-    z-index: 2;
-
-    & > a {
-      display: inline-block;
-      padding: 0.5rem;
-
-      & > svg {
-        display: block;
-        filter: drop-shadow(0 0 5px hsla(0, 0%, 30%, 0.5));
-
-        & > path {
-          fill: white;
-        }
-      }
-    }
-  }
-
   & > div.image-outer-container {
-    padding-top: 100%;
+    padding-top: 80%;
     position: relative;
 
     & > div.image-inner-container {
