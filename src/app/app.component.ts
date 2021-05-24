@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AngularFireStorage } from '@angular/fire/storage';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
@@ -10,7 +11,8 @@ declare const fbq: Function;
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(router: Router) {
+  constructor(router: Router, storage: AngularFireStorage) {
+    storage.storage.setMaxUploadRetryTime(10000);
     router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {
