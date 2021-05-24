@@ -42,7 +42,7 @@ h6 {
 }
 
 .container {
-  padding: 2.5rem;
+  padding: 16px;
 }
 
 .primary-btn {
@@ -58,6 +58,7 @@ h6 {
   box-shadow: #ef253c61 0 3px 20px;
   appearance: none;
   font-size: 1.5rem;
+  text-align: center;
 
   &.disabled {
     opacity: 0.5;
@@ -73,6 +74,17 @@ hr.seperator {
 
 .swiper-pagination-bullet-active {
   background-color: $primary-background-color;
+}
+
+.rectangle-3-2 {
+  position: relative;
+  width: 100%;
+  padding-top: 66.66%; /* 3:2 Aspect Ratio */
+  & > * {
+    top: 0;
+    left: 0;
+    position: absolute;
+  }
 }
 
 //fonts-----------------------------------------------------------------

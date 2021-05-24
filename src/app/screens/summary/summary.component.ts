@@ -34,31 +34,39 @@ export class SummaryComponent implements OnInit {
   ) {}
 
   async ngOnInit(): Promise<void> {
-    const routerState = this.routerStateService.state;
-    if (!routerState) {
-      this.router.navigate(['image-upload'], {
-        queryParamsHandling: 'preserve',
-      });
-      return;
-    }
-    this.selectedFile = routerState.selectedFile;
-    this.routerStateService.clearState();
-    this.imageSrc = await this.readFile(this.selectedFile);
+    try {
+      const routerState = this.routerStateService.state;
+      if (!routerState) {
+        this.router.navigate(['image-upload'], {
+          queryParamsHandling: 'preserve',
+        });
+        return;
+      }
+      this.selectedFile = routerState.selectedFile;
+      this.routerStateService.clearState();
+      this.imageSrc = await this.readFile(this.selectedFile);
 
-    const styleImageId =
-      this.activatedRoute.snapshot.queryParamMap.get('styleImageId');
-    if (!styleImageId) {
-      this.router.navigateByUrl('/styles-selection');
-      return;
+      const styleImageId =
+        this.activatedRoute.snapshot.queryParamMap.get('styleImageId');
+      if (!styleImageId) {
+        this.router.navigateByUrl('/styles-selection');
+        return;
+      }
+      const selectedStyleImage = styleImages.find(
+        (styleImage) => styleImage.id === styleImageId
+      );
+      if (!selectedStyleImage) {
+        this.router.navigateByUrl('/styles-selection');
+        return;
+      }
+      this.selectedStyleImage = selectedStyleImage;
+    } catch (error) {
+      this.analytics.logEvent('exception', {
+        description: error,
+        fatal: true,
+      });
+      this.router.navigateByUrl('/failure');
     }
-    const selectedStyleImage = styleImages.find(
-      (styleImage) => styleImage.id === styleImageId
-    );
-    if (!selectedStyleImage) {
-      this.router.navigateByUrl('/styles-selection');
-      return;
-    }
-    this.selectedStyleImage = selectedStyleImage;
   }
 
   readFile(file: File): Promise<string> {
@@ -95,7 +103,10 @@ export class SummaryComponent implements OnInit {
   }
 
   async uploadFile(file: File): Promise<string> {
-    const filePath = `v2/content-images/${uuidv4()}`;
+    const filenameParts = file.name.split('.');
+    const filePath = `v2/content-images/${uuidv4()}.${
+      filenameParts[filenameParts.length - 1]
+    }`;
     const fileRef = this.storage.ref(filePath);
     await fileRef.put(file);
     const publicUrl = await fileRef.getDownloadURL().toPromise();

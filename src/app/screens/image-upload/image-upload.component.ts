@@ -12,6 +12,7 @@ import SwiperCore, {
 import { ActivatedRoute, Router } from '@angular/router';
 import { StyleImage } from 'src/app/shared/models/style-image.model';
 import { artPreviews } from 'src/app/shared/raw/art-previews';
+import { AngularFireAnalytics } from '@angular/fire/analytics';
 
 SwiperCore.use([Thumbs, Controller, Autoplay, EffectCoverflow, Pagination]);
 
@@ -30,7 +31,8 @@ export class ImageUploadComponent implements OnInit {
   constructor(
     private routerStateService: RouterStateService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private analytics: AngularFireAnalytics
   ) {}
 
   ngOnInit(): void {
@@ -66,14 +68,22 @@ export class ImageUploadComponent implements OnInit {
   }
 
   async onChangeFileInput(file: File) {
-    // If the user clicks on the file input but then selects "cancel" the value of the file input is resetted. The onChange event will still be emitted with value undefined.
-    if (!file) {
-      this.uploadImgSrc = '';
-      this.selectedFile = undefined;
-      return;
+    try {
+      // If the user clicks on the file input but then selects "cancel" the value of the file input is resetted. The onChange event will still be emitted with value undefined.
+      if (!file) {
+        this.uploadImgSrc = '';
+        this.selectedFile = undefined;
+        return;
+      }
+      this.uploadImgSrc = await this.readFile(file);
+      this.selectedFile = file;
+    } catch (error) {
+      this.analytics.logEvent('exception', {
+        description: error,
+        fatal: true,
+      });
+      this.router.navigateByUrl('/failure');
     }
-    this.uploadImgSrc = await this.readFile(file);
-    this.selectedFile = file;
   }
 
   readFile(file: File): Promise<string> {

@@ -14,24 +14,18 @@ img.header-logo-image {
   height: auto;
 }
 
-a.button-primary {
-  display: block !important;
-  width: 100%;
+a.primary-btn {
+  background-color: $accent-color !important;
   color: $primary-font-color !important;
-  border-radius: 4px;
-  border: none;
-  margin: 3rem 0;
-  padding: 1rem 0;
-  background-color: $accent-color;
-  font-family: m-bold;
-  box-shadow: #ef253c61 0 3px 20px;
-  appearance: none;
-  font-size: 1.5rem;
+  display: block !important;
+}
 
-  // reset the styles from the 3rd party template
-  transition: none;
-  text-transform: initial;
-  line-height: initial;
+button.primary-btn {
+  font-family: m-bold;
+  font-size: 1.5rem;
+  appearance: none;
+  margin: 3rem 0;
+  line-height: normal;
 }
 
 .container {
@@ -95,14 +89,14 @@ div.like-container {
       flex: 2;
       display: flex;
       justify-content: center;
-      background-color: #7b83e4;
+      background-color: hsl(253, 32%, 55%);
       border: none;
       border-radius: 4px;
       padding: 0.5rem 0;
       transition: background-color 0.25s ease-in-out;
 
       &.selected {
-        background-color: hsl(235, 32%, 52%);
+        background-color: hsl(253, 32%, 40%);
       }
 
       & > div.button-content-container {
@@ -137,50 +131,59 @@ div.like-container {
   }
 }
 
-section.mug-preview-section > div.container {
+section.personal-quote > div.container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-  margin-bottom: 7rem;
-  position: relative;
+  background-color: #7969b1;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+
+  img.profile-image {
+    width: 40%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid white;
+  }
+
+  h2 {
+    font-size: 2rem;
+    font-family: m-bold;
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  p {
+    font-size: 1.25rem;
+    text-align: center;
+    margin-bottom: 0;
+  }
+}
+
+section.donate-or-share > div.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 
   & > * {
-    position: relative;
+    margin: 1rem 0;
+
+    &:first-child {
+      margin-top: 0;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
-  img.features-illustration-dark {
-    width: 100%;
-    height: auto;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-  }
-
-  & > h2 {
-    font-size: 2rem;
-    margin-top: 0;
-    line-height: 1.2;
-  }
-
-  & > p {
+  p {
     font-size: 1.25rem;
   }
+}
 
-  & > button.primary-btn {
-    margin-top: 1rem;
-    font-size: 1.5rem;
-    line-height: normal;
-    font-family: m-bold;
-    appearance: none;
-
-    &:first-of-type {
-      margin-top: 3rem;
-    }
-
-    &:nth-of-type(2) {
-      background-color: hsl(235, 66%, 69%);
-      box-shadow: hsla(235, 66%, 69%, 0.38) 0 3px 20px;
-    }
-  }
+section.download > div.container > button.download-button {
+  background-color: hsl(253, 32%, 55%);
 }

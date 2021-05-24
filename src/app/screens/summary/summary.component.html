@@ -1,15 +1,3 @@
-<div class="back-arrow-container">
-  <a routerLink="/image-upload" queryParamsHandling="preserve">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-    >
-      <path d="M0 12l9-8v6h15v4h-15v6z" />
-    </svg>
-  </a>
-</div>
 <div class="image-outer-container">
   <div class="image-inner-container">
     <img [src]="imageSrc" alt="" />
@@ -19,9 +7,10 @@
   <section>
     <h2>Where should we send the artwork to?</h2>
     <div class="paragraphs-container">
-      <p>Your artwork will be ready within two days.</p>
+      <p>Your artwork will be ready within 24h</p>
       <p>
-        We will send you a mail containing a link which you can then use to download your artwork.
+        We will send you a mail containing a link to download your digital
+        painting.
       </p>
     </div>
     <form ngNativeValidate (submit)="onSubmitForm($event)">
@@ -45,3 +34,4 @@
   <div class="dark-box"></div>
   <img src="assets/images/loading-spinner.svg" alt="" />
 </div>
+<app-custom-footer></app-custom-footer>

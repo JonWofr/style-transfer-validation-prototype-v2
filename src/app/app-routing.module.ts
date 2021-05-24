@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ArtGenerationComponent } from './screens/art-generation/art-generation.component';
 import { ArtworkPreviewComponent } from './screens/artwork-preview/artwork-preview.component';
 import { CheckoutComponent } from './screens/checkout/checkout.component';
 import { DocumentCreationFailure } from './screens/document-creation-failure/document-creation-failure.component';
@@ -24,6 +25,10 @@ const routes: Routes = [
   {
     path: 'image-upload',
     component: ImageUploadComponent,
+  },
+  {
+    path: 'art-generation',
+    component: ArtGenerationComponent,
   },
   {
     path: 'mug-preview',

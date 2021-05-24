@@ -35,6 +35,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CollectionConverterService } from './shared/services/collection-converter/collection-converter.service';
 import { CheckoutComponent } from './screens/checkout/checkout.component';
 import { ThankYouComponent } from './screens/thank-you/thank-you.component';
+import { ArtGenerationComponent } from './screens/art-generation/art-generation.component';
+import { NavBarComponent } from './shared/components/nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,8 @@ import { ThankYouComponent } from './screens/thank-you/thank-you.component';
     ArtworkPreviewComponent,
     CheckoutComponent,
     ThankYouComponent,
+    ArtGenerationComponent,
+    NavBarComponent,
   ],
   imports: [
     BrowserModule,

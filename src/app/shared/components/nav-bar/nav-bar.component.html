@@ -1,0 +1,45 @@
+<nav
+  *ngIf="isMobile"
+  class="nav mobile"
+  [class.transparent-background]="!shouldHaveBackground"
+  [class.light-version]="lightVersion"
+>
+  <div class="top-section">
+    <div class="nav-top-container expand-btn" style="text-align: left">
+      <a class="nav-el expand-btn" (click)="toggleExpand()">
+        <img
+          class="burger-menu"
+          src="/assets/icons/burger-menu.svg"
+          alt="burger-menu"
+        />
+      </a>
+    </div>
+    <div class="nav-top-container logo">
+      <a class="nav-el logo" routerLink="/home"
+        ><img src="/assets/icons/paintable-paws-logo-light.svg" alt=""
+      /></a>
+    </div>
+    <div class="nav-top-container bag" style="text-align: right"></div>
+  </div>
+</nav>
+<div *ngIf="isExpanded" [@inOutAnimation] class="nav-expandable-section">
+  <img
+    class="close-btn"
+    *ngIf="isExpanded"
+    (click)="toggleExpand()"
+    src="/assets/icons/close.svg"
+    alt="close-button"
+  />
+  <a
+    routerLink="/home"
+    class="nav-el animate__animated animate__flipInX"
+    (click)="toggleExpand()"
+    >Home</a
+  >
+  <a
+    routerLink="/styles-selection"
+    class="nav-el animate__animated animate__flipInX"
+    (click)="toggleExpand()"
+    >Art-Styles</a
+  >
+</div>

@@ -23,7 +23,7 @@
         <div class="container">
           <div class="hero-inner">
             <div class="hero-copy">
-              <h1 class="hero-title mt-0">Your artwork is finished!</h1>
+              <h1 class="hero-title mt-0">I finished your artwork!</h1>
               <p class="hero-paragraph">Scroll down for your free download</p>
             </div>
             <div class="hero-media">
@@ -95,32 +95,36 @@
           </div>
         </div>
       </section>
-      <section class="mug-preview-section">
+      <section class="personal-quote">
         <div class="container">
           <img
-            src="assets/landing-page-template/images/features-illustration-dark.svg"
+            src="assets/images/profile-image-nico.jpg"
             alt=""
-            class="features-illustration-dark"
+            class="profile-image"
           />
-          <h2>Get a Mug!</h2>
+          <h2>Thank you for your pug!</h2>
           <p>
-            Look forward to every cup of coffee in the morning with your
-            adorable pet on a custom mug!
+            It was so much fun working on your picture! <br />
+            I hope you like the outcome! <br />
+            <br />
+            - Nico -
           </p>
-          <img
-            [src]="stylizedImage?.mugPreviewImagePublicUrl"
-            alt=""
-            class="mug-preview"
-          />
-
+        </div>
+      </section>
+      <section class="donate-or-share">
+        <div class="container">
+          <p>If you can...</p>
+          <a class="primary-btn">Buy me a coffee ☕</a>
+          <p>Or share the image with your friends and family</p>
+          <button (click)="onClickShareButton()">share</button>
+        </div>
+      </section>
+      <section class="download">
+        <div class="container">
           <button
-            class="primary-btn"
-            routerLink="/mug-preview"
-            queryParamsHandling="preserve"
+            class="primary-btn download-button"
+            (click)="onClickDownloadButton()"
           >
-            More Information
-          </button>
-          <button class="primary-btn" (click)="downloadStylizedImage()">
             Download Free Artwork
           </button>
         </div>
