@@ -81,7 +81,7 @@ import { NavBarComponent } from './shared/components/nav-bar/nav-bar.component';
     // Is used to prevent events being fired in development mode which would pollute anayltics data.
     // Note: This value is only read and applied the first time a user visits the website.
     // In order to apply the current value one must delete all browser data and refresh the website or use the designated function setAnalyticsCollectionEnabled.
-    { provide: COLLECTION_ENABLED, useValue: true },
+    { provide: COLLECTION_ENABLED, useValue: environment.production },
     // When debug mode is enabled one can see the events in real time in the debug view in the firebase console.
     // Note: Events fired in debug mode are still included in all other reports, even though debug mode is set as a parameter.
     // Therefore debug mode and collection in general should only be turned on in development when it is absolutely necessary.
