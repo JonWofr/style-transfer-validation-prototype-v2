@@ -208,7 +208,7 @@ section.donate-or-share > div.container {
     flex-direction: column;
     width: 100%;
     align-items: center;
-    margin-top: 3rem;
+    margin-top: 2.5rem;
 
     & > p {
       margin-bottom: 1rem;
@@ -256,8 +256,8 @@ section.donate-or-share > div.container {
   }
 }
 
-section.download > div.container > button.download-button {
-  background-color: hsl(253, 32%, 55%);
+section.download > div.container > a.download-button {
+  background-color: hsl(253, 32%, 55%) !important;
   box-shadow: hsla(253, 32%, 55%, 0.38) 0 3px 20px;
-  margin: 5rem auto 3rem auto;
+  margin: 0 auto 3rem auto;
 }
