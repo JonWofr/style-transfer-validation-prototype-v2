@@ -127,8 +127,8 @@
           border-radius: 4px;
           padding: 0 1.5rem;
           background-color: $secondary-background-color;
-          color: $primary-font-color;
-          font-size: 1.25rem;
+          color: $primary-background-color;
+          font-size: 16px;
           &::placeholder {
             color: $placeholder-font-color;
           }

@@ -9,6 +9,7 @@ import * as firebase from 'firebase/app';
 import { styleImages } from 'src/app/shared/raw/style-images';
 import { StyleImage } from 'src/app/shared/models/style-image.model';
 import { AngularFireAnalytics } from '@angular/fire/analytics';
+import { FormControl, Validators } from '@angular/forms';
 
 declare const fbq: Function;
 
@@ -20,7 +21,7 @@ declare const fbq: Function;
 export class SummaryComponent implements OnInit {
   selectedFile: File;
   imageSrc: string;
-  email: string;
+  email = new FormControl('', [Validators.required, Validators.email]);
   selectedStyleImage: StyleImage;
   shouldShowSpinner = false;
 
@@ -61,12 +62,7 @@ export class SummaryComponent implements OnInit {
       }
       this.selectedStyleImage = selectedStyleImage;
     } catch (error) {
-      console.error(error);
-      await this.analytics.logEvent('exception', {
-        description: error,
-        fatal: true,
-      });
-      this.router.navigateByUrl('/failure');
+      this.handleError(error);
     }
   }
 
@@ -81,10 +77,9 @@ export class SummaryComponent implements OnInit {
     });
   }
 
-  async onSubmitForm(submitEvent: Event) {
+  async onSubmitForm() {
     try {
       this.shouldShowSpinner = true;
-      submitEvent.preventDefault();
       const contentImagePublicUrl = await this.uploadFile(this.selectedFile);
       await this.createStylizationJobDocument(contentImagePublicUrl);
       this.analytics.logEvent('generate_lead', {
@@ -92,15 +87,10 @@ export class SummaryComponent implements OnInit {
       });
       fbq('track', 'Lead', { content_name: this.selectedStyleImage.name });
       this.router.navigate(['success'], {
-        queryParams: { userEmail: this.email },
+        queryParams: { userEmail: this.email.value },
       });
     } catch (error) {
-      console.error(error);
-      await this.analytics.logEvent('exception', {
-        description: error,
-        fatal: true,
-      });
-      this.router.navigateByUrl('/failure');
+      this.handleError(error);
     }
   }
 
@@ -117,7 +107,7 @@ export class SummaryComponent implements OnInit {
 
   async createStylizationJobDocument(contentImagePublicUrl: string) {
     const stylizationJob: StylizationJob = {
-      email: this.email,
+      email: this.email.value,
       contentImagePublicUrl,
       styleImageName: this.selectedStyleImage.name,
       status: 'PENDING',
@@ -127,5 +117,14 @@ export class SummaryComponent implements OnInit {
       .collection('stylization-jobs-v2')
       .add(stylizationJob);
     return documentReference.id;
+  }
+
+  async handleError(error) {
+    console.error(error);
+    await this.analytics.logEvent('exception', {
+      description: error,
+      fatal: true,
+    });
+    this.router.navigateByUrl('/failure');
   }
 }

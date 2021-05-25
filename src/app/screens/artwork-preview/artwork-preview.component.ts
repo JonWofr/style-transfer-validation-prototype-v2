@@ -6,8 +6,10 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { HttpClient } from '@angular/common/http';
 import { CollectionConverterService } from 'src/app/shared/services/collection-converter/collection-converter.service';
 import { AngularFireAnalytics } from '@angular/fire/analytics';
+import { FileDownloadMetadata } from 'src/app/shared/models/file-download-metadata.model';
+import { UserReaction } from 'src/app/shared/enums/user-reaction.enum';
 
-declare const fbq: Function;
+// The navigator API seems to not have a complete type definition yet
 declare const navigator: any;
 
 @Component({
@@ -24,6 +26,8 @@ export class ArtworkPreviewComponent implements OnInit {
 
   stylizedImageDocumentReference?: DocumentReference<StylizedImage>;
   stylizedImage?: StylizedImage;
+  isSharingApiSupported = false;
+  UserReaction = UserReaction;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -36,97 +40,132 @@ export class ArtworkPreviewComponent implements OnInit {
   ) {}
 
   async ngOnInit(): Promise<void> {
-    if (!this.activatedRoute.snapshot.queryParamMap.has('stylizedImageId')) {
-      this.router.navigateByUrl('/');
-    }
-    const stylizedImageId =
-      this.activatedRoute.snapshot.queryParamMap.get('stylizedImageId');
-    const stylizedImageDocument = await this.stylizedImagesCollection
-      .doc(stylizedImageId)
-      .get();
-    if (!stylizedImageDocument.exists) {
-      this.router.navigateByUrl('/');
-    }
-    this.stylizedImageDocumentReference = stylizedImageDocument.ref;
-    this.stylizedImage = stylizedImageDocument.data();
-  }
-
-  async onChangeDoesLike(doesLike: boolean) {
-    await this.stylizedImageDocumentReference.set(
-      { doesLike },
-      { merge: true }
-    );
-    this.stylizedImage.doesLike = doesLike;
-  }
-
-  async onClickShareButton() {
-    if (navigator.share) {
-      try {
-        const stylizedImageBlob = await this.downloadStylizedImage();
-        const urlParts = this.stylizedImage.publicUrl.split('/');
-        const stylizedImageFile = new File(
-          [stylizedImageBlob],
-          urlParts[urlParts.length - 1]
-        );
-        if (
-          navigator.canShare &&
-          navigator.canShare({ files: [stylizedImageFile] })
-        ) {
-          console.info('Support for file sharing');
-          await navigator.share({
-            files: [stylizedImageFile],
-            title: 'Pictures',
-            text: 'Our Pictures.',
-          });
-        } else {
-          console.info('No support for file sharing');
-          await navigator.share({
-            title: 'MDN',
-            text: 'Learn web development on MDN!',
-            url: 'https://developer.mozilla.org',
-          });
-        }
-        console.info('shaerd successfully');
-      } catch (error) {
-        console.log(error);
+    try {
+      if (!this.activatedRoute.snapshot.queryParamMap.has('stylizedImageId')) {
+        this.router.navigateByUrl('/');
+        return;
       }
-    } else {
-      console.info('no sharing api');
+      const stylizedImageId =
+        this.activatedRoute.snapshot.queryParamMap.get('stylizedImageId');
+      const stylizedImageDocument = await this.stylizedImagesCollection
+        .doc(stylizedImageId)
+        .get();
+      if (!stylizedImageDocument.exists) {
+        this.router.navigateByUrl('/');
+        return;
+      }
+      this.stylizedImageDocumentReference = stylizedImageDocument.ref;
+      this.stylizedImage = stylizedImageDocument.data();
+      this.isSharingApiSupported = navigator.share !== undefined;
+      this.stylizedImageDocumentReference.update({
+        'analytics.hasViewed': true,
+        'analytics.isSharingApiSupported': this.isSharingApiSupported,
+      });
+    } catch (error) {
+      this.handleError(error);
+    }
+  }
+
+  async onChangeUserReaction(userReaction: 'Love it!' | 'Yes' | "It's okay") {
+    try {
+      await this.stylizedImageDocumentReference.update({ userReaction });
+      this.stylizedImage.userReaction = userReaction;
+    } catch (error) {
+      this.handleError(error);
+    }
+  }
+
+  onClickDonateButton() {
+    try {
+      this.stylizedImageDocumentReference.update({
+        'analytics.hasClickedDonateButton': true,
+      });
+    } catch (error) {
+      this.handleError(error);
+    }
+  }
+
+  // The share button will only be displayed when the share API is available
+  async onClickShareButton() {
+    try {
+      const shareData = {
+        title: 'My pawsome work of art! 🎨',
+        url: 'https://paintable-paws.com',
+      };
+
+      // Checks if file sharing is supported
+      if (navigator.canShare) {
+        const [stylizedImageBlob, metadata] =
+          await this.downloadStylizedImage();
+        console.log('can share files');
+        console.log(metadata);
+        const stylizedImageFile = new File([stylizedImageBlob], metadata.name, {
+          type: metadata.contentType,
+        });
+        // Checks if the file to be shared is invalid
+        if (!navigator.canShare({ files: [stylizedImageFile] })) {
+          throw new Error('Invalid file');
+        }
+        shareData['text'] =
+          'Paintable Paws created this unique work of art for me. Head over to their website to get your own purrfect piece. 🐾';
+        shareData['files'] = [stylizedImageFile];
+      } else {
+        shareData['text'] =
+          'Paintable Paws created this unique work of art for me. Head over to their website to get your own purrfect piece. 🐾';
+      }
+
+      await navigator.share(shareData);
+      this.stylizedImageDocumentReference.update({
+        'analytics.hasShared': true,
+      });
+      this.analytics.logEvent('share');
+    } catch (error) {
+      this.handleError(error);
     }
   }
 
   async onClickDownloadButton() {
-    const stylizedImageBlob = await this.downloadStylizedImage();
-    const fileReader = new FileReader();
-    fileReader.addEventListener('load', (event: ProgressEvent<FileReader>) => {
-      const aElement = document.createElement('a');
-      aElement.setAttribute('href', event.target.result as string);
-      const urlParts = this.stylizedImage.publicUrl.split('/');
-      aElement.setAttribute('download', urlParts[urlParts.length - 1]);
-      aElement.click();
-      this.analytics.logEvent('download_stylized_image');
-    });
-    fileReader.readAsDataURL(stylizedImageBlob);
+    try {
+      const [stylizedImageBlob, metadata] = await this.downloadStylizedImage();
+      const fileReader = new FileReader();
+      fileReader.addEventListener(
+        'load',
+        (event: ProgressEvent<FileReader>) => {
+          const aElement = document.createElement('a');
+          aElement.setAttribute('href', event.target.result as string);
+          aElement.setAttribute('download', metadata.name);
+          aElement.click();
+          this.stylizedImageDocumentReference.update({
+            'analytics.hasDownloaded': true,
+          });
+          this.analytics.logEvent('download_stylized_image');
+        }
+      );
+      fileReader.readAsDataURL(stylizedImageBlob);
+    } catch (error) {
+      this.handleError(error);
+    }
   }
 
   // Programmatic download is necessary because browsers prohibit a tags with the download attribute from downloading from a different orign (CORS)
-  async downloadStylizedImage(): Promise<Blob> {
-    try {
-      const downloadUrl = await this.storage
-        .refFromURL(this.stylizedImage.publicUrl)
-        .getDownloadURL()
-        .toPromise();
-      const stylizedImageBlob = await this.httpClient
-        .get(downloadUrl, { responseType: 'blob' })
-        .toPromise();
-      return stylizedImageBlob;
-    } catch (error) {
-      console.error(error);
-      await this.analytics.logEvent('exception', {
-        description: error,
-        fatal: true,
-      });
-      this.router.navigateByUrl('/failure');
-    }
+  async downloadStylizedImage(): Promise<[Blob, FileDownloadMetadata]> {
+    const fileRef = this.storage.refFromURL(this.stylizedImage.publicUrl);
+    const downloadUrl = await fileRef.getDownloadURL().toPromise();
+    const metadata = await fileRef
+      .getMetadata()
+      .toPromise<FileDownloadMetadata>();
+    const stylizedImageBlob = await this.httpClient
+      .get(downloadUrl, { responseType: 'blob' })
+      .toPromise();
+    return [stylizedImageBlob, metadata];
+  }
+
+  async handleError(error) {
+    console.error(error);
+    await this.analytics.logEvent('exception', {
+      description: error,
+      fatal: true,
+    });
+    // this.router.navigateByUrl('/failure');
   }
 }

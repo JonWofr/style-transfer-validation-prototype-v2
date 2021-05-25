@@ -5,12 +5,8 @@ import { SwiperModule } from 'swiper/angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeroComponent } from './screens/home/components/hero/hero.component';
 import { StyleSelectionComponent } from './screens/style-selection/style-selection.component';
-import { MugPreviewComponent } from './screens/mug-preview/mug-preview.component';
 import { SummaryComponent } from './screens/summary/summary.component';
-import { DescriptionSwiperComponent } from './screens/mug-preview/components/description-swiper/description-swiper.component';
-import { HowItWorksComponent } from './screens/home/components/how-it-works/how-it-works.component';
 import { HomeComponent } from './screens/home/home.component';
 import { RouterStateService } from './shared/services/router-state/router-state.service';
 import { AngularFireModule } from '@angular/fire';
@@ -33,20 +29,14 @@ import { PhotoGuideComponent } from './shared/components/photo-guide/photo-guide
 import { ArtworkPreviewComponent } from './screens/artwork-preview/artwork-preview.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CollectionConverterService } from './shared/services/collection-converter/collection-converter.service';
-import { CheckoutComponent } from './screens/checkout/checkout.component';
-import { ThankYouComponent } from './screens/thank-you/thank-you.component';
-import { ArtGenerationComponent } from './screens/art-generation/art-generation.component';
 import { NavBarComponent } from './shared/components/nav-bar/nav-bar.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeroComponent,
     StyleSelectionComponent,
-    MugPreviewComponent,
     SummaryComponent,
-    DescriptionSwiperComponent,
-    HowItWorksComponent,
     HomeComponent,
     DocumentCreationSuccess,
     DocumentCreationFailure,
@@ -55,15 +45,14 @@ import { NavBarComponent } from './shared/components/nav-bar/nav-bar.component';
     ImageUploadComponent,
     PhotoGuideComponent,
     ArtworkPreviewComponent,
-    CheckoutComponent,
-    ThankYouComponent,
-    ArtGenerationComponent,
     NavBarComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
     SwiperModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,

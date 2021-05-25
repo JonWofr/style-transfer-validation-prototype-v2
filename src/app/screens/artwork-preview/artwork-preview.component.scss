@@ -35,11 +35,11 @@ button.primary-btn {
 
 h1 {
   font-family: m-bold;
-  line-height: 1.5;
 }
 
 h1.hero-title {
-  font-size: 3rem;
+  font-size: 2.5rem;
+  line-height: normal;
 }
 
 div,
@@ -86,7 +86,7 @@ div.like-container {
     }
 
     & > button {
-      flex: 2;
+      flex: 3;
       display: flex;
       justify-content: center;
       background-color: hsl(253, 32%, 55%);
@@ -157,7 +157,14 @@ section.personal-quote > div.container {
   p {
     font-size: 1.25rem;
     text-align: center;
-    margin-bottom: 0;
+
+    &.text {
+      margin-bottom: 1.5rem;
+    }
+
+    &.signature {
+      margin-bottom: 0;
+    }
   }
 }
 
@@ -179,11 +186,76 @@ section.donate-or-share > div.container {
     }
   }
 
-  p {
-    font-size: 1.25rem;
+  div.buy-me-a-coffee-button-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+
+    & > p {
+      margin-bottom: 1rem;
+      font-size: 1.25rem;
+      text-align: center;
+    }
+
+    & > a {
+      margin: 0;
+    }
+  }
+
+  div.share-button-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    margin-top: 3rem;
+
+    & > p {
+      margin-bottom: 1rem;
+      font-size: 1.25rem;
+      text-align: center;
+    }
+
+    & > button {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      background-color: hsl(253, 32%, 55%);
+      border: none;
+      border-radius: 4px;
+      padding: 1rem 0;
+
+      & > div.button-content-container {
+        position: relative;
+
+        & > p {
+          font-family: m-bold;
+          font-size: 1.5rem;
+          line-height: normal;
+          margin-bottom: 0;
+        }
+
+        & > svg {
+          width: 24px;
+          height: 24px;
+          position: absolute;
+          top: 50%;
+          transform: translate(calc(100% + 1rem), -50%);
+          right: 0;
+
+          path,
+          polygon,
+          rect {
+            fill: $primary-font-color;
+          }
+        }
+      }
+    }
   }
 }
 
 section.download > div.container > button.download-button {
   background-color: hsl(253, 32%, 55%);
+  box-shadow: hsla(253, 32%, 55%, 0.38) 0 3px 20px;
+  margin-top: 4rem;
 }

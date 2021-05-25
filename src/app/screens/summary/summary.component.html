@@ -13,18 +13,17 @@
         painting.
       </p>
     </div>
-    <form ngNativeValidate (submit)="onSubmitForm($event)">
+    <form (ngSubmit)="onSubmitForm()">
       <div class="form-group">
         <label for="email">Email</label>
         <input
           type="email"
           id="email"
-          required
-          (keyup)="email = $event.target.value"
           placeholder="john-doe@gmail.com"
+          [formControl]="email"
         />
       </div>
-      <button class="primary-btn" type="submit" [class.disabled]="!email">
+      <button class="primary-btn" type="submit" [disabled]="email.invalid">
         Submit
       </button>
     </form>
