@@ -126,7 +126,7 @@ export class ArtworkPreviewComponent implements OnInit {
 
   async onClickDownloadButton() {
     try {
-      const [stylizedImageBlob, metadata] = await this.downloadStylizedImage();
+      /*       const [stylizedImageBlob, metadata] = await this.downloadStylizedImage();
       const fileReader = new FileReader();
       fileReader.addEventListener(
         'load',
@@ -134,6 +134,7 @@ export class ArtworkPreviewComponent implements OnInit {
           const aElement = document.createElement('a');
           aElement.setAttribute('href', event.target.result as string);
           aElement.setAttribute('download', metadata.name);
+          aElement.setAttribute('target', '_blank');
           aElement.click();
           this.stylizedImageDocumentReference.update({
             'analytics.hasDownloaded': true,
@@ -141,7 +142,13 @@ export class ArtworkPreviewComponent implements OnInit {
           this.analytics.logEvent('download_stylized_image');
         }
       );
-      fileReader.readAsDataURL(stylizedImageBlob);
+      fileReader.readAsDataURL(
+        new Blob([stylizedImageBlob], { type: metadata.contentType })
+      ); */
+      this.stylizedImageDocumentReference.update({
+        'analytics.hasDownloaded': true,
+      });
+      this.analytics.logEvent('download_stylized_image');
     } catch (error) {
       this.handleError(error);
     }
@@ -157,6 +164,7 @@ export class ArtworkPreviewComponent implements OnInit {
     const stylizedImageBlob = await this.httpClient
       .get(downloadUrl, { responseType: 'blob' })
       .toPromise();
+    console.log(stylizedImageBlob);
     return [stylizedImageBlob, metadata];
   }
 
@@ -166,6 +174,6 @@ export class ArtworkPreviewComponent implements OnInit {
       description: error,
       fatal: true,
     });
-    // this.router.navigateByUrl('/failure');
+    this.router.navigateByUrl('/failure');
   }
 }

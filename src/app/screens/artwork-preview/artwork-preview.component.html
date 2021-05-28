@@ -74,13 +74,13 @@
           />
           <h2>
             {{
-              stylizedImage?.personalQuote.title ||
+              stylizedImage?.personalQuote?.title ||
                 "Thank you for your picture!"
             }}
           </h2>
           <p class="text">
             {{
-              stylizedImage?.personalQuote.text ||
+              stylizedImage?.personalQuote?.text ||
                 "It was so much fun working on your picture! I hope you like the outcome!"
             }}
           </p>
@@ -100,8 +100,8 @@
             >
           </div>
           <div *ngIf="isSharingApiSupported" class="share-button-container">
-            <p>Or share the image with your friends and family</p>
-            <button (click)="onClickShareButton()">
+            <p>Or share the artwork with your friends and family</p>
+            <!-- <button (click)="onClickShareButton()">
               <div class="button-content-container">
                 <p>Share</p>
                 <svg
@@ -128,18 +128,26 @@
                   </g>
                 </svg>
               </div>
-            </button>
+            </button> -->
           </div>
         </div>
       </section>
       <section class="download">
         <div class="container">
-          <button
+          <!--           <button
             class="primary-btn download-button"
             (click)="onClickDownloadButton()"
           >
             Download Free Artwork
-          </button>
+          </button> -->
+          <a
+            [href]="stylizedImage?.publicUrl"
+            target="_blank"
+            class="primary-btn download-button"
+            (click)="onClickDownloadButton()"
+          >
+            Download Free Artwork
+          </a>
         </div>
       </section>
     </main>
