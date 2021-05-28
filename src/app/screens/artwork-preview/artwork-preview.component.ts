@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StylizedImage } from 'src/app/shared/models/stylized-image.model';
@@ -29,6 +29,10 @@ export class ArtworkPreviewComponent implements OnInit {
   isSharingApiSupported = false;
   UserReaction = UserReaction;
 
+  @ViewChild('canvas', { static: true })
+  canvas: ElementRef<HTMLCanvasElement>;
+  private ctx: CanvasRenderingContext2D;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
@@ -39,7 +43,16 @@ export class ArtworkPreviewComponent implements OnInit {
     private analytics: AngularFireAnalytics
   ) {}
 
+  download() {
+    var data = this.canvas.nativeElement.toDataURL();
+    const aElement = document.createElement('a');
+    aElement.setAttribute('href', data as string);
+    aElement.setAttribute('download', 'test');
+    aElement.click();
+  }
+
   async ngOnInit(): Promise<void> {
+    this.ctx = this.canvas.nativeElement.getContext('2d');
     try {
       if (!this.activatedRoute.snapshot.queryParamMap.has('stylizedImageId')) {
         this.router.navigateByUrl('/');
@@ -56,6 +69,26 @@ export class ArtworkPreviewComponent implements OnInit {
       }
       this.stylizedImageDocumentReference = stylizedImageDocument.ref;
       this.stylizedImage = stylizedImageDocument.data();
+
+      var img = new Image();
+
+      img.onload = () => {
+        this.ctx.drawImage(
+          img,
+          0,
+          0,
+          img.width,
+          img.height, // source rectangle
+          0,
+          0,
+          this.canvas.nativeElement.width,
+          this.canvas.nativeElement.height
+        );
+      };
+
+      img.crossOrigin = 'anonymous';
+      img.src = this.stylizedImage.publicUrl;
+
       this.isSharingApiSupported = navigator.share !== undefined;
       this.stylizedImageDocumentReference.update({
         'analytics.hasViewed': true,
