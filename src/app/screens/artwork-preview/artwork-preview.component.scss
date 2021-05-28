@@ -94,6 +94,7 @@ div.like-container {
       border-radius: 4px;
       padding: 0.5rem 0;
       transition: background-color 0.25s ease-in-out;
+      cursor: pointer;
 
       &.selected {
         background-color: hsl(253, 32%, 40%);
@@ -157,6 +158,9 @@ section.personal-quote > div.container {
   p {
     font-size: 1.25rem;
     text-align: center;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 
     &.text {
       margin-bottom: 1.5rem;
@@ -260,4 +264,26 @@ section.download > div.container > a.download-button {
   background-color: hsl(253, 32%, 55%) !important;
   box-shadow: hsla(253, 32%, 55%, 0.38) 0 3px 20px;
   margin: 0 auto 3rem auto;
+}
+
+.hero-media-container {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (min-width: 760px) {
+  .hero-media-illustration {
+    display: none;
+  }
+
+  .hero-media-container {
+    margin-bottom: 7rem;
+  }
+
+  section.personal-quote > div.container {
+    img.profile-image {
+      max-width: 150px;
+    }
+  }
 }
