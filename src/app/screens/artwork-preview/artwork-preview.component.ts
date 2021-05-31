@@ -29,9 +29,13 @@ export class ArtworkPreviewComponent implements OnInit {
   isSharingApiSupported = false;
   UserReaction = UserReaction;
 
+  data = '';
+
   @ViewChild('canvas', { static: true })
   canvas: ElementRef<HTMLCanvasElement>;
   private ctx: CanvasRenderingContext2D;
+  tempCanvas = document.createElement('canvas');
+  tctx = this.tempCanvas.getContext('2d');
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -44,15 +48,62 @@ export class ArtworkPreviewComponent implements OnInit {
   ) {}
 
   download() {
-    var data = this.canvas.nativeElement.toDataURL();
+    var data = this.generateArtworkData(0.4);
     const aElement = document.createElement('a');
     aElement.setAttribute('href', data as string);
-    aElement.setAttribute('download', 'test');
+    aElement.setAttribute('download', 'test.jpeg');
     aElement.click();
   }
 
-  async ngOnInit(): Promise<void> {
+  generateArtworkData(quality: number): string {
+    const canvasRef = this.canvas.nativeElement;
+    var cw = canvasRef.width;
+    var ch = canvasRef.height;
+    this.tempCanvas.width = cw * quality;
+    this.tempCanvas.height = ch * quality;
+    this.tctx.drawImage(
+      canvasRef,
+      0,
+      0,
+      cw,
+      ch,
+      0,
+      0,
+      cw * quality,
+      ch * quality
+    );
+    return this.tempCanvas.toDataURL('image/jpeg');
+  }
+
+  initCanvas(imageUrl: string) {
     this.ctx = this.canvas.nativeElement.getContext('2d');
+
+    var img = new Image();
+    img.onload = () => {
+      this.ctx.drawImage(
+        img,
+        0,
+        0,
+        img.width,
+        img.height, // source rectangle
+        0,
+        0,
+        this.canvas.nativeElement.width,
+        this.canvas.nativeElement.height
+      );
+      this.ctx.font = 100 + 'px Arial';
+      this.ctx.fillStyle = '#FFFFFF';
+      this.ctx.fillText('@paintable-paws.com', 30, 750);
+    };
+
+    img.crossOrigin = 'anonymous';
+    img.src = imageUrl;
+    this.canvas.nativeElement.oncontextmenu = function () {
+      return false;
+    };
+  }
+
+  async ngOnInit(): Promise<void> {
     try {
       if (!this.activatedRoute.snapshot.queryParamMap.has('stylizedImageId')) {
         this.router.navigateByUrl('/');
@@ -70,24 +121,7 @@ export class ArtworkPreviewComponent implements OnInit {
       this.stylizedImageDocumentReference = stylizedImageDocument.ref;
       this.stylizedImage = stylizedImageDocument.data();
 
-      var img = new Image();
-
-      img.onload = () => {
-        this.ctx.drawImage(
-          img,
-          0,
-          0,
-          img.width,
-          img.height, // source rectangle
-          0,
-          0,
-          this.canvas.nativeElement.width,
-          this.canvas.nativeElement.height
-        );
-      };
-
-      img.crossOrigin = 'anonymous';
-      img.src = this.stylizedImage.publicUrl;
+      this.initCanvas(this.stylizedImage.publicUrl);
 
       this.isSharingApiSupported = navigator.share !== undefined;
       this.stylizedImageDocumentReference.update({
