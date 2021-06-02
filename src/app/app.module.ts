@@ -31,6 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CollectionConverterService } from './shared/services/collection-converter/collection-converter.service';
 import { NavBarComponent } from './shared/components/nav-bar/nav-bar.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { SupportModalComponent } from './popups/support-modal/support-modal.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     PhotoGuideComponent,
     ArtworkPreviewComponent,
     NavBarComponent,
+    SupportModalComponent,
   ],
   imports: [
     BrowserModule,

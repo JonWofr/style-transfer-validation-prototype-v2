@@ -28,6 +28,7 @@ export class ArtworkPreviewComponent implements OnInit {
   stylizedImage?: StylizedImage;
   isSharingApiSupported = false;
   UserReaction = UserReaction;
+  modalIsActive = true;
 
   data = '';
 
@@ -79,6 +80,7 @@ export class ArtworkPreviewComponent implements OnInit {
     this.ctx = this.canvas.nativeElement.getContext('2d');
 
     var img = new Image();
+
     img.onload = () => {
       this.ctx.drawImage(
         img,

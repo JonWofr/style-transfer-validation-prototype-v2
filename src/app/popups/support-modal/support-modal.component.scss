@@ -1,0 +1,60 @@
+@import "../../../colors.scss";
+
+:host {
+  display: flex;
+  position: fixed;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 95%;
+  border-radius: 20px;
+  padding: 1.5rem 2rem;
+  background-color: hsl(253, 32%, 55%);
+}
+
+img {
+  width: 100%;
+}
+
+p.close {
+  margin-left: auto;
+  font-family: m-bold;
+  color: $tertiary-font-color;
+  margin-bottom: 2rem;
+}
+
+p,
+h3 {
+  color: $primary-font-color;
+  text-align: center;
+}
+
+h3 {
+  font-size: 2rem;
+  font-family: m-bold;
+  margin-bottom: 1.5rem;
+}
+
+p {
+  font-size: 17px;
+  font-family: m-reg;
+  margin-bottom: 3rem;
+  span {
+    font-family: m-semi-bold;
+  }
+}
+a.primary-btn {
+  text-decoration: none;
+  margin-bottom: none !important;
+}
+
+a.text-link {
+  font-size: 1.8rem;
+  font-family: m-light-it;
+  color: white;
+  margin-bottom: 2rem;
+}
